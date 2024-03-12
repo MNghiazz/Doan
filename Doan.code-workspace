@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"ostream": "cpp",
+			"iostream": "cpp"
+		},
+		"liveServer.settings.multiRootWorkspaceName": "Study",
+		"liveServer.settings.port": 5501
+	}
+}
