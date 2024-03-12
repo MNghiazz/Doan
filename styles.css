@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: #c0c0c0;
+  background-color: #9b9b9b;
 }
 
 .header {
@@ -69,8 +69,10 @@ body {
 }
 
 .side-bar {
-  height: 100%;
-    max-width: 135px;
+  padding: 20px;
+  background-color: white;
+  height: 100%; 
+    max-width: 180px;
     margin-top: 30px;
     margin-left: 30px;
 }
@@ -113,16 +115,22 @@ body {
   filter: invert(68%) sepia(0%) saturate(7491%) hue-rotate(336deg) brightness(70%) contrast(60%);
 }
 
-.main-content {
-  
-  width: 80%;
-  margin-top: 30px;
-  margin-left: 50px;
-  margin-right: 0;
+.main-container {
+  margin-top: 20px;
 }
 
-.main-content h2 {
+.container {
+  margin: 0 20px;
+}
+
+.main-container h2 {
+  padding-top: 10px;
   margin-left: 10px;
+}
+.RecentlyAdded {
+  margin-top: 20px;
+  padding: 0px 10px;
+  background-color: white;
 }
 
 .RecentlyAdded h2 {
@@ -131,7 +139,8 @@ body {
 
 
 .RA-books {
-  margin-left: 20;
+  padding-top: 20px;
+  
   overflow-x: scroll; 
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
@@ -143,48 +152,14 @@ body {
 
 
 .recent-list {
-  margin-left: 40px;
+  margin-left: 20px;
   flex: none;
   
 }
 
-.arr {
-  position: absolute;
-  top: 200px;
-  right: 40px;
-  background: white;
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  margin: 15px;
-  transition: 0.4 ease;
+.RA-books .recent-list .card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow border when hovered */
 }
 
-.arr:hover {
-  box-shadow: 0px 0px 5px 5px #c4c4c4;
-}
 
-.arr div {
-  position: relative;
-  height: 30px;
-  width: 30px;
-  border-top: 7px solid black;
-  border-left: 7px solid black;
-  transform: rotate(45deg);
-  left: 15px;
-  top: 20px;
-}
-
-.left {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.right {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
