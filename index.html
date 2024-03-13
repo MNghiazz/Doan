@@ -9,11 +9,22 @@
     <link rel="stylesheet" href="https://cdnjs.cludflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
 </head>
 <body style="background-color: #F0F0F0;">
-    <header class="header bg-body-tertiary py-2">
-        <div class="container d-flex flex-row align-items-center">
-            <div class="wrapper">
+    <header class="header  py-2">
+        <div class=" d-flex flex-row align-items-center">
+
+            <button class="btn btn-outline-secondary d-lg-none ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Menu</button>
+
+            <div class="divider"></div>
+
+            <div class="wrapper me-auto">
+                <div class="search-mobile-button" >
+                    <button id="searchButtonMobile" type="button" name="searchButtonMobile">
+                        <svg viewBox="0 0 24 24"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="searchBar">
-                  <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Tìm kiếm sách" value="" />
+                  <input class="search-bar-type" id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Tìm kiếm sách" value="" />
                   <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
                     </svg>
@@ -23,10 +34,10 @@
             
         
         
-            <div class="header-actions d-flex my-3 ms-auto align-items-center">
+            <div class="header-actions d-flex my-3 ms-auto me-3 align-items-center justify-content-end">
                 <button type="button" class="btn btn-success me-3 btn-sm "><strong class="cart-text">Sách đã chọn</strong></button>
                 <div class="user-info">
-                    <span id="user-name"><strong>Leonardo Dicaprio</strong></span>
+                    <span id="user-name" class="user-name"><strong>Leonardo Dicaprio</strong></span>
                     <img class="rounded-circle shadow-4-strong" id="avatar" src="image/sample1.jpg" width="30" height="30">
                 </div>
                 <div class="divider"></div>
@@ -37,27 +48,32 @@
     </header>
     
     <main class="d-flex">
-        <div class="side-bar flex-start">
-            <div class="browser">
-                <p>Danh mục sách</p>
-                <ul>
-                    <li><img src="icon/book-open-solid.svg" width="20" class="side-icon me-2"><strong>Toàn bộ sách</strong></li>
-                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Thể loại</strong></li>
-                    <li><img src="icon/fire-solid.svg" width="20" class="side-icon me-2"><strong>Sách thịnh hành</strong></li>
-                </ul>
+            <div class="side-bar">
+                
+                    <div class="browser">
+                        <p>Danh mục sách</p>
+                        <ul>
+                            <li><img src="icon/book-open-solid.svg" width="20" class="side-icon me-2"><strong>Toàn bộ sách</strong></li>
+                            <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Thể loại</strong></li>
+                            <li><img src="icon/fire-solid.svg" width="20" class="side-icon me-2"><strong>Sách thịnh hành</strong></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="your-book">
+                        <p>Sách của bạn</p>
+                        <ul>
+                            <li><img src="icon/clock-regular.svg" width="20" class="side-icon me-2"><strong>Sách đã mượn</strong></li>
+                            <li><img src="icon/calendar-week-solid.svg" width="20" class="side-icon me-2"><strong>Sách chưa trả</strong></li>
+                            <li><img src="icon/star-regular.svg" width="20" class="side-icon me-2"><strong>Sách yêu thích</strong></li>
+                        </ul>
+                    </div>
+                
+                
+            
             </div>
-            <hr>
-            <div class="your-book">
-                <p>Sách của bạn</p>
-                <ul>
-                    <li><img src="icon/clock-regular.svg" width="20" class="side-icon me-2"><strong>Sách đã mượn</strong></li>
-                    <li><img src="icon/calendar-week-solid.svg" width="20" class="side-icon me-2"><strong>Sách chưa trả</strong></li>
-                    <li><img src="icon/star-regular.svg" width="20" class="side-icon me-2"><strong>Sách yêu thích</strong></li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="main-container container">
+        <div class="main-container container-sm">
+
             <div class="RecentlyAdded">
                 <h2 class="fw-light h5" style="color: #626262;">Mới thêm gần đây</h2>
                 <a class="fw-lighter" href="#" style="font-size: 0.9rem;color:#717171;">Xem tất cả</a>
@@ -148,6 +164,106 @@
 
                 
 
+            </div>
+
+            <div class="allBook">
+                <h2 class="fw-light h5" style="color: #626262;">Tất cả sách</h2>
+                <a class="fw-lighter browse-all" href="#" style="font-size: 0.9rem;color:#717171;">Xem tất cả</a>
+                <ul class="products-grid">
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/ArseneLupin.jpg"  width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <h2 class="product-name fw-normal">Arsene Lupin</h2>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/ArseneLupin.jpg"  width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <h2 class="product-name fw-normal">Arsene Lupin</h2>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/ArseneLupin.jpg"  width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <h2 class="product-name fw-normal">Arsene Lupin</h2>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/ArseneLupin.jpg"  width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <h2 class="product-name fw-normal">Arsene Lupin</h2>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/ArseneLupin.jpg"  width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <h2 class="product-name fw-normal">Arsene Lupin</h2>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/ArseneLupin.jpg"  width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <h2 class="product-name fw-normal">Arsene Lupin</h2>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                    
+                    
+                </div>
             </div>
             
         </div>
