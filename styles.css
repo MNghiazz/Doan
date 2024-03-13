@@ -6,8 +6,12 @@ body {
   background-color: #9b9b9b;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 900px) {
   header .header-actions .user-info .user-name{
+    display: none;
+  }
+
+  header .web-icon {
     display: none;
   }
   main .side-bar {
@@ -22,11 +26,11 @@ body {
 
 .header {
     width: 100%;
-    background-color: rgba(51, 34, 0, .05);;
+    background-color: rgba(51, 34, 0, .05);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
   }
 
-  
+
 
 .wrapper {
     max-width: 31.25rem;
@@ -199,6 +203,12 @@ body {
   margin-left: 2px;
 }
 
+.RA-books .recent-list .card .author {
+  font-size: 0.9rem;
+  color: #818181;
+}
+
+
 
 .RA-books .recent-list .card:hover {
   
@@ -237,18 +247,52 @@ body {
 }
 
 .products-grid .box-content {
+  align-items: center;
   padding: 0.8rem;
   display: block;
 }
 
-.products-grid .box-content .product-name {
-  line-height: 17px;
-  min-height: 8px;
-  word-break: break-word;
-  white-space: normal;
-  overflow: hidden;
-  min-height: 2.8em;
-  max-height: 2.8em;
-  font-size: 18px;
+.products-grid .box-content:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.products-grid .box-content .title {
+  margin: 0;
+  margin-top: 18px;
+  font-size: 16.5px;
   color: #333333;
+}
+
+.products-grid .box-content .author {
+  font-size: 0.9rem;
+  color: #818181;
+}
+
+footer {
+  background-color: rgba(51, 34, 0, .05);
+  width: 100%;
+  
+}
+
+.contact-info {
+  padding-top: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info ul {
+  list-style-type: none;
+}
+
+.term-n-condition {
+  padding: 10px;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.term-n-condition li {
+  padding-left: 10px;
 }
