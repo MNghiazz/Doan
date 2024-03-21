@@ -1,0 +1,320 @@
+html {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+body {
+  background-color: #9b9b9b;
+}
+
+@media (max-width: 900px) {
+  header .header-actions .user-info .user-name {
+    display: none;
+  }
+
+  header .web-icon {
+    display: none;
+  }
+
+  main .side-bar {
+    display: none;
+  }
+
+}
+
+.container-header {
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+  background-color: rgba(51, 34, 0, .05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Add shadow */
+}
+
+
+
+.wrapper {
+  max-width: 31.25rem;
+  width: 100%;
+}
+
+#searchButtonMobile {
+  padding: 0;
+  border: none;
+  background-color: #aba38f;
+  border-radius: 50%;
+}
+
+#searchButtonMobile svg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+}
+
+@media (min-width: 800px) {
+  .search-mobile-button {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .wrapper .searchBar {
+    display: none;
+  }
+}
+
+.searchBar {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#searchQueryInput {
+  width: 100%;
+  max-width: 25rem;
+  height: 2rem;
+  background: #f5f5f5;
+  outline: none;
+  border: none;
+  border: 1px solid #ccc;
+  border-radius: 1.625rem;
+  padding: 0 3.5rem 0 1.5rem;
+  font-size: 1rem;
+}
+
+#searchQuerySubmit {
+  width: 3.5rem;
+  height: 2.8rem;
+  margin-left: -3.5rem;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+#searchQuerySubmit:hover {
+  cursor: pointer;
+}
+
+.divider {
+  border-left: 1.5px solid #ccc;
+  height: 30px;
+  margin: 0 15px;
+}
+
+.bell-icon {
+  filter: invert(68%) sepia(0%) saturate(7491%) hue-rotate(336deg) brightness(94%) contrast(87%);
+}
+
+#user-name {
+  font-size: 0.8em;
+  color: #979797;
+}
+
+.btn {
+  font-size: 0.5rem;
+  margin-left: 100px;
+}
+
+.side-bar {
+  padding: 20px;
+  background-color: white;
+  height: 100%;
+  max-width: 180px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.side-bar hr {
+  margin: 40px 0;
+}
+
+
+.browser p,
+.your-book p {
+  font-size: 0.9rem;
+  color: #818181;
+  margin-bottom: 15px;
+}
+
+.browser ul,
+.your-book ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.browser ul li,
+.your-book ul li {
+  padding: 5px;
+  font-size: 0.8rem;
+  color: #626262;
+  margin-bottom: 10px;
+}
+
+.browser ul li:hover,
+.your-book ul li:hover {
+  border-radius: 0.2rem;
+  background-color: #c4c4c4;
+  cursor: pointer;
+}
+
+.side-icon {
+  filter: invert(68%) sepia(0%) saturate(7491%) hue-rotate(336deg) brightness(70%) contrast(60%);
+}
+
+.main-container {
+  margin-top: 20px;
+  margin-right: 30px;
+}
+
+.container {
+  margin: 0 20px;
+  margin-right: 50px;
+}
+
+.main-container h2 {
+  padding-top: 10px;
+  margin-left: 10px;
+}
+
+
+.MyProfile {
+  margin-top: 20px;
+  padding: 0px 10px;
+  background-color: white;
+}
+
+.MyProfile h2 {
+  margin-top: 30px;
+}
+
+
+.my-profile {
+  padding-bottom: 2px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.my-profile::-webkit-scrollbar {
+  width: 0;
+}
+
+.my-profile label,
+.my-profile input {
+  margin-left: 10px;
+  letter-spacing: 0.6;
+}
+
+.my-profile label {
+  color: #626262;
+}
+
+.ChangePassword {
+  margin-top: 20px;
+  padding: 0px 10px;
+  background-color: white;
+}
+
+.ChangePassword h2 {
+  margin-top: 30px;
+}
+
+
+.change-password {
+  padding-bottom: 2px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.change-password::-webkit-scrollbar {
+  width: 0;
+}
+
+.change-password label,
+.change-password input {
+  margin-left: 10px;
+  letter-spacing: 0.6;
+}
+
+.change-password label {
+  color: #626262;
+}
+
+.History {
+  margin-top: 20px;
+  padding: 0px 10px;
+  background-color: white;
+}
+
+.History h2 {
+  margin-top: 30px;
+}
+
+
+.RA-books {
+  padding-bottom: 2px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.RA-books::-webkit-scrollbar {
+  width: 0;
+}
+
+
+.recent-list {
+  margin-left: 2px;
+}
+
+.RA-books .recent-list .card .author,
+.RA-books .recent-list .card .borrow-day,
+.RA-books .recent-list .card .return-day,
+.RA-books .recent-list .card .quantity,
+.RA-books .recent-list .card .status {
+  font-size: 0.9rem;
+  color: #818181;
+}
+
+
+
+.RA-books .recent-list .card:hover {
+
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  /* Add shadow border when hovered */
+}
+
+
+footer {
+  background-color: rgba(51, 34, 0, .05);
+  width: 100%;
+
+}
+
+.contact-info {
+  padding-top: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info ul {
+  list-style-type: none;
+}
+
+.term-n-condition {
+  padding: 10px;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.term-n-condition li {
+  padding-left: 10px;
+}
