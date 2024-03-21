@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sách đã chọn</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cludflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" />
+</head>
+
+<body style="background-color: #F0F0F0;">
+    <header class="header  py-2">
+        <div class=" d-flex flex-row align-items-center">
+            <img src="icon/library-svgrepo-com.svg" alt="library icon" width="50" class="ms-3 web-icon">
+            <button class="btn btn-outline-secondary d-lg-none ms-3" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Menu</button>
+
+            <div class="divider"></div>
+
+            <div class="wrapper me-auto">
+                <div class="search-mobile-button">
+                    <button id="searchButtonMobile" type="button" name="searchButtonMobile">
+                        <svg viewBox="0 0 24 24">
+                            <path fill="#666666"
+                                d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="searchBar">
+                    <input class="search-bar-type" id="searchQueryInput" type="text" name="searchQueryInput"
+                        placeholder="Tìm kiếm sách" value="" />
+                    <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="#666666"
+                                d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <div class="header-actions d-flex my-3 ms-auto me-3 align-items-center justify-content-end">
+                <div class="user-info">
+                    <span id="user-name" class="user-name"><strong>Leonardo Dicaprio</strong></span>
+                    <img class="rounded-circle shadow-4-strong" id="avatar" src="image/sample1.jpg" width="30"
+                        height="30">
+                </div>
+                <div class="divider"></div>
+                <img src="icon/bell-solid.svg" alt="bell icon" width="20" class="bell-icon">
+            </div>
+        </div>
+
+    </header>
+    <main class="d-flex">
+        <div class="side-bar">
+
+            <div class="browser">
+                <p>Danh mục sách</p>
+                <ul>
+                    <li><img src="icon/book-open-solid.svg" width="20" class="side-icon me-2"><strong>Toàn bộ
+                            sách</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Thể
+                            loại</strong></li>
+                    <li><img src="icon/fire-solid.svg" width="20" class="side-icon me-2"><strong>Sách thịnh
+                            hành</strong></li>
+                </ul>
+            </div>
+            <hr>
+            <div class="your-book">
+                <p>Sách của bạn</p>
+                <ul>
+                    <li><img src="icon/clock-regular.svg" width="20" class="side-icon me-2"><strong>Sách đã
+                            mượn</strong></li>
+                    <li><img src="icon/calendar-week-solid.svg" width="20" class="side-icon me-2"><strong>Sách chưa
+                            trả</strong></li>
+                    <li><img src="icon/star-regular.svg" width="20" class="side-icon me-2"><strong>Sách yêu
+                            thích</strong></li>
+                </ul>
+            </div>
+
+
+
+        </div>
+        <div class="confirmation-buttons">
+            <button type="button" class="btn btn-primary" onclick="confirmSelection()">Đồng ý</button>
+            <button type="button" class="btn btn-secondary" onclick="cancelSelection()">Hủy</button>
+        </div>
+        
+        
+        <script>
+            function confirmSelection() {
+                var checkboxes = document.querySelectorAll('.checkbox');
+                var selectedCount = 0;
+
+            checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                selectedCount++;
+            }
+        });
+                // Nếu không có checkbox nào được chọn, hiển thị thông báo và không cho phép đồng ý
+                if (selectedCount === 0) {
+                    alert("Vui lòng chọn ít nhất một cuốn sách trước khi tiếp tục thanh toán.");
+                    return;
+                }
+        
+                // Nếu có ít nhất một checkbox được chọn, mở modal giao diện thanh toán
+                window.location.href = "payment.html";
+            }
+        
+            function cancelSelection() {
+                window.location.href = "index.html"
+            }
+        </script>
+        
+        
+        <div class="main-container container-sm">
+            <div class="Chosen book">
+                <h2 class="fw-light h5" style="color: #626262;">Sách đã chọn</h2>
+                <div class="RA-books mt-3 d-flex ">
+
+                    <div class="recent-list list-slider draggable d-flex flex-row">
+                        <div class="card me-3 border-0" style="width: 180px;">
+                            <img src="image/choToiXin1VeDiTuoiTho.jpg" width="189" class="card-img-top"
+                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            <div class="card-body">
+                                <p class="title mb-0">Cho Tôi Xin Một Vé Đi Tuổi Thơ</p>
+                                <p class="author">Nguyễn Nhật Ánh</p>
+                                <input type="checkbox" id="book1" name="book1" class="checkbox" checked>
+                                <label for="book1">Chọn sách này</label>
+                            </div>
+                        </div>
+                        <div class="card me-3 border-0" style="width: 180px;">
+                            <img src="image/DoiThua.jpg" width="189" class="card-img-top"
+                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            <div class="card-body">
+                                <p class="title mb-0">Đời Thừa</p>
+                                <p class="author">Nam Cao</p>
+                                <input type="checkbox" id="book2" name="book2" class="checkbox" checked>
+                                <label for="book2">Chọn sách này</label>
+                            </div>
+                        </div>
+                        <div class="card me-3 border-0" style="width: 180px;">
+                            <img src="image/godFather.jpg" width="10" class="card-img-top"
+                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            <div class="card-body">
+                                <p class="title mb-0">Bố Già</p>
+                                <p class="author">Mario Puzo</p>
+                                <input type="checkbox" id="book3" name="book3" class="checkbox" checked>
+                                <label for="book3">Chọn sách này</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
