@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tất cả sách</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cludflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+</head>
+
+<body style="background-color: #F0F0F0;">
+    <header class="header  py-2">
+        <div class=" d-flex flex-row align-items-center">
+            <img src="icon/library-svgrepo-com.svg" alt="library icon" width="50" class="ms-3 web-icon">
+            <button class="btn btn-outline-secondary d-lg-none ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Menu</button>
+
+            <div class="divider"></div>
+
+            <div class="wrapper me-auto">
+                <div class="search-mobile-button">
+                    <button id="searchButtonMobile" type="button" name="searchButtonMobile">
+                        <svg viewBox="0 0 24 24"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="searchBar">
+                    <input class="search-bar-type" id="searchQueryInput" type="text" name="searchQueryInput" placeholder="Tìm kiếm sách" value="" />
+                    <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                    </svg>
+                  </button>
+                </div>
+            </div>
+
+
+
+            <div class="header-actions d-flex my-3 ms-auto me-3 align-items-center justify-content-end">
+                <button type="button" class="btn btn-success me-3 btn-sm "><strong class="cart-text">Sách đã chọn</strong></button>
+                <div class="user-info">
+                    <span id="user-name" class="user-name"><strong>Leonardo Dicaprio</strong></span>
+                    <img class="rounded-circle shadow-4-strong" id="avatar" src="image/sample1.jpg" width="30" height="30">
+                </div>
+                <div class="divider"></div>
+                <img src="icon/bell-solid.svg" alt="bell icon" width="20" class="bell-icon">
+            </div>
+        </div>
+
+    </header>
+
+    <main class="d-flex">
+        <div class="side-bar">
+
+            <div class="browser">
+                <p>Thể Loại</p>
+                <ul>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Truyện</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Review Sách</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Tìm Kiếm Nâng Cao</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Nhạc Chữa Lành</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Khoa Học Tâm Linh</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Phim Thức Tỉnh</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Tâm Lý - Kỹ Năng</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Tôn Giáo - Tâm Linh</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Khoa Học - Kỹ Thuật</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Kiến Trúc - Xây Dựng</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Nông - Lâm - Ngư</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Y Học - Sức Khỏe</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Lịch Sử - Quân Sự</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Hồi Ký - Tùy Bút</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Quản Trị - Kinh Doanh</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Self Help - Khởi Nghiệp</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Marketing - Bán Hàng</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Triết Học - Lý Luận</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Khai Tâm - Mở Trí</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Văn Học - Nghệ Thuật</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Giáo Dục - Đào Tạo</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Giáo Trình - Bài Giảng</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Công Nghệ Thông Tin</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Thể Thao - Võ Thuật</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Yoga - Thiền</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Phát Triển Bản Thân</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Ẩm Thực - Nấu Ăn</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Tử Vi - Phong Thủy</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Biên Khảo - Địa Lý</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Khám Phá - Bí Ẩn</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Huyền Bí - Giả Tưởng</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Cổ Tích - Thần Thoại</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Truyện Ngắn - Tiểu Thuyết</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Nhân Vật Lịch Sử</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Đường Lối - Chính Trị</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Văn Hóa - Xã Hội</strong></li>
+                    <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2"><strong>Tác Phẩm Kinh Điển</strong></li>
+                    <li><img src="icon/fire-solid.svg" width="20" class="side-icon me-2"><strong>Sách thịnh hành</strong></li>
+
+
+
+                </ul>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="main-container container-sm">
+            <div class="allBook">
+                <h2 class="fw-light h5" style="color: #626262;">Tất cả sách</h2>
+                <ul class="products-grid">
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/neuMotDemKhongCoLuKhach.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Nếu Một Đêm Không Có Người Lữ Khách</p>
+                            <p class="author">Italo Calvino</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/RungNauy.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Rừng Na Uy</p>
+                            <p class="author">Haruki Murakami</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/TamQuocDienNghia.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Tam Quốc Diễn Nghĩa</p>
+                            <p class="author">La Quán Trung</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/TayDuKy2.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Tây Du Ký (Tập 2)</p>
+                            <p class="author">Ngô Thừa Ân</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/ViecLang.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Việc Làng</p>
+                            <p class="author">Ngô Tất Tố</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/sachNguocDoiXuoi.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Sách Ngược Đời Xuôi</p>
+                            <p class="author">Gabrielle Zevin</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/sapien.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Sapien Lược Sử Loài Người</p>
+                            <p class="author">Yuval Noah Harari</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/trituegiatao.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">TRÍ TUỆ GIẢ TẠO - INTERNET ĐÃ LÀM GÌ CHÚNG TA</p>
+                            <p class="author">Nicholas Carr</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/hatgiongtamhon.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Hạt Giống Tâm Hồn</p>
+                            <p class="author">Nhiều tác giả</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/laptrinhcanban.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Lập Trình Căn Bản</p>
+                            <p class="author">Codegym</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/14438-cong-tu-bac-lieu-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Công Tử Bạc Liêu</p>
+                            <p class="author">Nguyên Hùng</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/14649-nguoi-van-chuyen-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Người Vận Chuyển</p>
+                            <p class="author">Lê Tuấn</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13867-giao-trinh-triet-hoc-mac-lenin-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Giáo Trình Triết Học Mác-Lênin</p>
+                            <p class="author">Bộ Giáo Dục và Đào Tạo</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/14631-thao-tung-tam-ly-nhan-dien-thuc-tinh-va-chua-lanh-nhung-ton-thuong-tiem-an-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">THAO TÚNG TÂM LÝ - NHẬN DIỆN, THỨC TỈNH VÀ CHỮA LÀNH NHỮNG TỔN THƯƠNG TIỀM ẨN</p>
+                            <p class="author">Shannon Thomas</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/14319-toi-quyet-dinh-song-cho-chinh-toi-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">TÔI QUYẾT ĐỊNH SỐNG CHO CHÍNH TÔI</p>
+                            <p class="author">Kim Suhyun</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/1269-499-dieu-cam-ky-trong-phong-thuy-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">499 ĐIỀU CẤM KỴ TRONG PHONG THỦY</p>
+                            <p class="author">Đang Cập Nhật</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/14717-nhat-ky-gai-goi-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">NHẬT KÝ GÁI GỌI</p>
+                            <p class="author">Hắc Nhan</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/14702-vi-em-toi-nguyen-thanh-quy-du-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">VÌ EM, TÔI NGUYỆN THÀNH QUỶ DỮ</p>
+                            <p class="author">Thiên Ý</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/14011-y-nghia-ve-su-chet-dau-kho-va-thoi-gian-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">Ý NGHĨA VỀ SỰ CHẾT, ĐAU KHỔ VÀ THỜI GIAN</p>
+                            <p class="author">Jiddu Krishnamurti</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/183-duoi-chan-thay-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">DƯỚI CHÂN THẦY</p>
+                            <p class="author">Jiddu Krishnamurti</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13861-doc-ehon-cho-be-phuong-phap-giao-duc-con-cua-cha-me-nhat-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">ĐỌC EHON CHO BÉ - PHƯƠNG PHÁP GIÁO DỤC CON CỦA CHA MẸ NHẬT</p>
+                            <p class="author">Nguyễn Thị Thu</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13857-thien-tai-va-su-giao-duc-tu-som-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">THIÊN TÀI VÀ SỰ GIÁO DỤC TỪ SỚM</p>
+                            <p class="author">Kimura Kyuichi</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13771-1001-y-tuong-dot-pha-trong-quang-cao-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">1001 Ý TƯỞNG ĐỘT PHÁ TRONG QUẢNG CÁO</p>
+                            <p class="author">Dupont</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/8357-bien-bat-ky-ai-thanh-khach-hang-1 (1).jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">BIẾN BẤT KỲ AI THÀNH KHÁCH HÀNG</p>
+                            <p class="author">C. J. Hayden</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13766-su-that-ve-marketing-qua-email-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">SỰ THẬT VỀ MARKETING QUA EMAIL</p>
+                            <p class="author">Simms Jenkins</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/10401-kotler-ban-ve-tiep-thi-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">KOTLER - BÀN VỀ TIẾP THỊ</p>
+                            <p class="author">Philip Kotler</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/927-cha-me-la-nguoi-thay-dau-tien-tot-nhat-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">CHA MẸ LÀ NGƯỜI THẦY ĐẦU TIÊN TỐT NHẤT</p>
+                            <p class="author">Thôi Hoa Phương</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13808-12-manh-ghep-gia-tri-cho-con-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">12 MẢNH GHÉP GIÁ TRỊ CHO CON</p>
+                            <p class="author">Linda</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13833-day-con-kieu-do-thai-su-may-man-cua-cai-dau-goi-bi-tray-xuoc-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">DẠY CON KIỂU DO THÁI - SỰ MAY MẮN CỦA CÁI ĐẦU GỐI BỊ TRẦY XƯỚC</p>
+                            <p class="author">Wendy Mogel</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13469-xay-dung-lai-trai-dat-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">XÂY DỰNG LẠI TRÁI ĐẤT</p>
+                            <p class="author">Mark Everard</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">TRUYỆN KỂ VỀ CÁC NHÀ BÁC HỌC VẬT LÝ</p>
+                            <p class="author">Đào Văn Phúc</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/8076-anh-hung-xa-dieu-kim-dung-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">ANH HÙNG XẠ ĐIÊU</p>
+                            <p class="author">Kim Dung</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box-content">
+                            <div class="book-images">
+                                <img src="image/13611-thien-long-bat-bo-1.jpg" width="200" height="200" class="lazyloaded card-img-top" alt="a picture of Arsene Lupin book" name="ArseneLupin">
+                            </div>
+                            <p class="title">THIÊN LONG BÁT BỘ - PHẦN 1</p>
+                            <p class="author">Kim Dung</p>
+                            <div class="rating-container">
+                                <div class="desktop-only ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width: 87%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-info ">
+            <h2>Contact us at: </h2>
+            <ul>
+                <li>Email: <a class="email">chuacoemail@gmail.com</a></li>
+                <li>SDT: +840000000</li>
+                <li>Địa chỉ: Không biết địa chỉ :V</li>
+            </ul>
+        </div>
+
+        <ul class="term-n-condition">
+            <li><a class="about" href="#">About</a></li>
+            <li><a class="terms" href="#">Terms and Conditions</a></li>
+        </ul>
+    </footer>
+    <script src="main.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+        function goToPage(pageUrl) {
+            window.location.href = pageUrl;
+        }
+    </script>
+
+</body>
+
+</html>
