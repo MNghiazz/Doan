@@ -296,3 +296,10 @@ footer {
 .term-n-condition li {
   padding-left: 10px;
 }
+.confirmation-buttons {
+  position: fixed;
+  bottom: 20px; 
+  right: 20px; 
+}
+
+
