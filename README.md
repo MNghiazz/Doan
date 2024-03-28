@@ -7,7 +7,7 @@
 
 <h3>Framework sử dụng</h3>
 <li>
-  <ul>ReactJS</ul>
+  <ul>HTML/CSS</ul>
   <ul>ExpressJS - NodeJS</ul>
   <ul>MongoDB</ul>
 </li>
