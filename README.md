@@ -4,3 +4,10 @@
 </p>
 
 ![image](https://github.com/MNghiazz/Doan/assets/109862700/a9d31d68-1a9d-4323-bcda-86230b856060)
+
+<h3>Framework sử dụng</h3>
+<li>
+  <ul>ReactJS</ul>
+  <ul>ExpressJS - NodeJS</ul>
+  <ul>MongoDB</ul>
+</li>
