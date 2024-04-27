@@ -3,7 +3,6 @@ function changeTab(tabIndex) {
 
     document.querySelector('.nav-wrap ul li.act').classList.remove('act');
 
-    document.querySelectorAll('.nav-wrap ul li')[tabIndex - 1].classList.add('act');
 
     document.getElementById('bookContent').style.display = 'none';
     document.getElementById('catalogContent').style.display = 'none';
