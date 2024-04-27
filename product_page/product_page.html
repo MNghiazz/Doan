@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="product_page.css">
     <link rel="stylesheet" href="/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdnjs.cludflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    
 </head>
 <body style="background-color: #F0F0F0;">
     <header class="header  py-2">
         <div class=" d-flex flex-row align-items-center">
-            <a href="index.html" class="logo">
+            <a href="/index.html" class="logo">
                 <img src="/icon/library-svgrepo-com.svg" alt="library icon" width="50" class="ms-3 web-icon">
             </a>
             <button class="btn btn-outline-secondary d-lg-none ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Menu</button>
@@ -49,76 +49,18 @@
         </div>
         
     </header>
-    <main class="productSession content-center">
 
-        <div class="book-information cf">
-            <div class="book-img">
-                <img src="/image/DoiThua.jpg" alt="Đời Thừa - Nam Cao">
-            </div>
-            <div class="book-info">
 
-                <h1 class="book-title" style="color: #54504e;">Đời Thừa</h1>
-                <p class="author-categories">
-                    <a class="author me-3">Nam Cao</a>
-                    <a class="categorie me-3">Tiểu thuyết</a>
-                </p>
-                
-                <p class="function-button">
-                    <a class="btn btn-danger me-3" id="readbtn">Đọc Truyện</a>
-                    <a class="btn btn-outline-primary me-3" id="favoritebtn">Yêu Thích</a>
-                    <a class="btn btn-success" id="rentbtn">Thuê Truyện</a>
-                </p>
-                
+    <main class="productSession content-center" product-session>
 
-            </div>
-
+        <div class="book-information cf" book-information>
+        
         </div>
 
-        <div class="content-nav-wrap cf">
-            <div class="nav-wrap">
-                <ul>
-                    <li class="act"><a class="lang" onclick="changeTab(1)" href="javascript:">Thông tin chi tiết</a></li>
-                    <li class><a class="lang" onclick="changeTab(2)" href="javascript:">Danh sách chương</a></li>
-                    <li><a class="lang" href="#user-discuss" onclick="changeTab(1)">Bình luận</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="book-content-wrap cf" style="display: block;" id="bookContent">
-            <div class="book-info-wrap">
-                <div class="book-intro">
-                    <p class="description">
-                        Trong mảng sáng tác về đề tài tiểu tư sản của Nam Cao, truyện ngắn "Đời Thừa" 
-                        có một vị trí đặc biệt. "Đời Thừa" đã ghi lại chân thật hình ảnh buồn thảm 
-                        của người tri thức tiểu tư sản nghèo, nhà văn Nam Cao đã phác hoạ rõ nét hình 
-                        ảnh vừa bi vừa hài của lớp người này trở nên đầy ám ảnh. Giá trị của "Đời Thừa" không phải chỉ ở chỗ đã miêu tả chân thật cuộc sống nghèo khổ, bế tắc của người trí thức tiểu tư sản nghèo, 
-                        đã viết về người tiểu tư sản không phải với ngòi bút vuốt ve, thi vị hoá, mà còn vạch ra cả những thói xấu của họ v.v....</p>
-                </div>
-
-                <div class="divider-y"></div>
-
-                <div class="book-author">
-                    <ul>
-                        <li>Tác giả: </li>
-                        <li>Nhà xuất bản: </li>
-                        <li>Số trang: </li>
-                    </ul>
-                </div>
-
-                <div class="user-commentWrap">
-                    <div class="comment-head cf">
-                        <h3 class="lang">
-                            <span class="goDiscuss act" onclick="changeBox(1)">Bình luận</span>
-                            <i class="grey">|</i>
-                            <span class="goRatting" onclick="changeBox(2)">Đánh giá</span>
-                        </h3>
-                    </div>
-                </div>
-
-            </div>
 
 
-
+        <div class="book-content-wrap cf" style="display: block;" id="bookContent" book-content>
+        
         </div>
 
         <div class="catalog-content-wrap" id="catalogContent" style="display: none;">
@@ -297,11 +239,11 @@
         
 
 
-
+    
     </main>
 
-    <script src="/main.js"></script>
-    <script src="product_page.js"></script>
-    <script src="js/bootstrap.bundle.js"></script>
+   
+    <script src="product_page.js" type="module"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
 </body>
 </html>

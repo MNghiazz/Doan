@@ -126,6 +126,9 @@
 .content-nav-wrap .nav-wrap li.act a {
     color: #ed4259;
 }
+.content-nav-wrap .nav-wrap li a:hover {
+    cursor: pointer;
+}
 
 .lang {
     font-weight: 400;

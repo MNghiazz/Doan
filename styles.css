@@ -143,6 +143,11 @@ a {
   margin: 40px 0;
 }
 
+.side-bar a {
+  text-decoration: none;
+  color: #626262;
+}
+
 
 .browser  p,
 .your-book p {
@@ -246,19 +251,21 @@ a {
 }
 
 .allBook ul.products-grid {
+
   list-style-type: none;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 8px;
   padding: 0;
 }
 
 .allBook ul.products-grid .book-images img {
+  align-items: center;
   max-height: 190px;
   max-width: 100%;
   width: auto;
   height: auto;
-  object-fit: contain;
+  padding: 0 auto;
 }
 
 .products-grid .box-content {
@@ -317,4 +324,22 @@ footer {
   right: 20px; 
 }
 
+
+.error-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  background-color: var(--background);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 8;
+  
+}
+
+.error-content .btn-primary {margin-block-start: 20px;}
 
