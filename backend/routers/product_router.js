@@ -36,13 +36,27 @@ const uploadOptions = multer({ storage: storage});
 
 
 router.get(`/`, async (req, res) => {
-    const productList = await Product.find().populate('author category');     //find all of the product
-
-    if(!productList){
-        res.status(500).json({success: false})
+    let filter = {};
+    if (req.query.categories) {
+        const categoryId = req.query.categories;
+        filter = { category: { $in: [categoryId] } }; // Wrap categoryId in an array for $in operator
     }
-    res.send(productList);
+    
+    if (req.query.authors) {
+        const authorId = req.query.authors;
+        filter.author = authorId;
+    }
+
+    try {
+        const productList = await Product.find(filter).populate('author category');
+        res.send(productList);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
 });
+
+
 
 router.get('/:id', async (req, res) => {            //find category with id
     const product = await Product.findById(req.params.id).populate('category author');
@@ -53,21 +67,7 @@ router.get('/:id', async (req, res) => {            //find category with id
     res.status(200).send(product); 
 })
 
-router.get(`/:id`, async (req, res) => {        // find product with id
 
-    //localhost:300/api/v1/products?categories=222222,5555    example of a query
-    let filter = {};
-    if(req.query.categories) {
-        filter = {category: req.query.categories.split(',')};       //split the id of categories
-    }
-
-    const product = await Product.find(filter).populate('category');     //find 1 product by ID
-
-    if(!product){
-        res.status(500).json({success: false})
-    }
-    res.send(product);
-});
 
 
 router.put('/:id', async (req, res) => {   //Update category

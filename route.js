@@ -1,4 +1,4 @@
- import { productPage } from "./product_page/product_page.js";
+
 
  import { error404 } from "./main.js";
 

@@ -3,18 +3,71 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const {User} = require('../models/user');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
+
+
+const FILE_TYPE_MAP = {
+    'image/png': 'png',
+    'image/jpeg': 'jpeg',
+    'image/jpg': 'jpg'
+}
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const isValid = FILE_TYPE_MAP[file.mimetype];
+        let uploadError = new Error('invalid image type');
+
+        if(isValid) {
+
+            uploadError = null;
+        }
+        cb(uploadError, 'public/upload/user');
+    },
+    filename: function (req, file, cb) {
+        const fileName = file.originalname.split(' ').join('-');
+        const extension = FILE_TYPE_MAP[file.mimetype];
+        cb(null, `${fileName}-${Date.now()}.${extension}`)
+    }
+})
+
+const uploadOptions = multer({ storage: storage});
+
+const verifyToken = (req, res, next) => {
+    const token = req.headers['authorization'];
+    if (!token) return res.status(401).json({ message: 'Token is required' });
+
+    jwt.verify(token, process.env.secret, (err, decoded) => {
+        if (err) return res.status(401).json({ message: 'Invalid token' });
+        req.userId = decoded.userId;
+        next();
+    });
+};
+
+// Route to get logged-in user's information
+router.get('/me', verifyToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.userId).select('-passwordHash');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json({ user });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 router.get(`/`, async (req, res) => {
-    const productList = await User.find().select('-passwordHash');     //find all of the product
+    const userList = await User.find().select('-passwordHash');     //find all of the user
 
-    if(!productList){
+    if(!userList){
         res.status(500).json({success: false})
     }
-    res.send(productList);
+    res.send(userList);
 })
 
-router.get('/:id', async (req, res) => {            //find category with id
+router.get('/:id', async (req, res) => {            //find user by id
     const user = await User.findById(req.params.id).select('-passwordHash');
     
     if(!user) {
@@ -24,7 +77,7 @@ router.get('/:id', async (req, res) => {            //find category with id
 })
 
 
-router.post(`/`, async (req, res) => {      //create category
+router.post(`/`, async (req, res) => {      //create user
     let user = new User({
         name: req.body.name,
         email: req.body.email,
@@ -102,7 +155,7 @@ router.get(`/get/count`, async (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    User.findByIdAndDelete(req.params.id).then(user => {            //delete a category by id
+    User.findByIdAndDelete(req.params.id).then(user => {            //delete a user by id
         if(user) {
             return res.status(200).json({success: true, message: 'the user has been deleted'});
         }

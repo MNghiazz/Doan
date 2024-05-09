@@ -164,6 +164,11 @@ fetchData(url.productsId(productId), function(bookDetail) {
             <a class="btn btn-success" id="rentbtn">Thuê Truyện</a>
         </p>
     `;
+
+    bookInf.querySelector('.author-categories').addEventListener('click',  function() {
+        // Navigate to product page with the ID of the clicked product
+        window.location.href = `/tatcasach.html?authors=${authorId}`;
+    });
     bookInformation.appendChild(bookInf);
 
     bookDetail.category.forEach(category => {

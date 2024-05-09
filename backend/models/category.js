@@ -7,6 +7,12 @@ const categorySchema = mongoose.Schema({
     }
 })
 
+categorySchema.virtual('subcategories', {
+    ref: 'subCategory', // reference to the SubCategory model
+    localField: '_id',
+    foreignField: 'belong',
+});
+
 categorySchema.virtual('id').get(function () {
     return this._id.toHexString();
 })

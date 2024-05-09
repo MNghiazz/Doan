@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const {Category} = require('../models/category');
 const mongoose = require('mongoose');
+const {subCategory} = require('../models/subCategoroy');
 
 
 router.get(`/`, async (req, res) => {
-    const categoryList = await Category.find();     //find all of the category
+    const categoryList = await Category.find().populate('subcategories');     //find all of the category
 
     if(!categoryList){
         res.status(500).json({success: false})

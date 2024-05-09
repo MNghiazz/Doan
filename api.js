@@ -15,6 +15,15 @@ export const url = {
     categories() {
         return `http://localhost:3000/api/v1/categories`
     },
+
+    productWithCategories(id) {
+        return `http://localhost:3000/api/v1/products?categories=${id}`
+    },
+
+    productWithAuthor(id){
+        return `http://localhost:3000/api/v1/products?authors=${id}`
+    },
+
     productsId(id) {
         return `http://localhost:3000/api/v1/products/${id}`
     },
