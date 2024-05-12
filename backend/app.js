@@ -35,6 +35,9 @@ const usersRouter = require('./routers/users_router');
 const ordersRouter = require('./routers/orders_router');
 const authorsRouter = require('./routers/authors_router');
 const subcategoryRouter = require('./routers/subCategory_router');
+const userAuthRouter = require('./routers/userAuthRouter');
+
+
 
 app.use(`${api}/products`, productRouter);
 app.use(`${api}/categories`, categoriesRouter);
@@ -42,6 +45,7 @@ app.use(`${api}/users`, usersRouter);
 app.use(`${api}/orders`, ordersRouter);
 app.use(`${api}/authors`, authorsRouter);
 app.use(`${api}/subcategories`, subcategoryRouter);
+app.use(`${api}/auth`, userAuthRouter);
 
 
 mongoose.connect(process.env.CONNECTION_STRING)

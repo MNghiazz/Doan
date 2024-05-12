@@ -25,12 +25,11 @@ function authJwt() {
 async function isRevoked(req, jwt) {
 
     const payload = jwt.payload
-    if(req.user) {
-        return true;
+    if (payload.isAdmin || payload.userId) {
+      return false;
     }
-    return false;
+    return true;
+  }
 
-    
-}
 
 module.exports = authJwt;

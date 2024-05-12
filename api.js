@@ -1,8 +1,14 @@
 
 
 
-export const fetchData = function (URL, callback) {
-    fetch(`${URL}`)
+export const fetchData = function (URL, token = null,  callback) {
+    const headers={};
+    if(token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+    fetch(`${URL}`, {
+        headers: headers
+    })
     .then(res => res.json())
     .then(data => callback(data));  
 }
@@ -27,4 +33,10 @@ export const url = {
     productsId(id) {
         return `http://localhost:3000/api/v1/products/${id}`
     },
+
+    userInf(id) {
+        return `http://localhost:3000/api/v1/users/${id}`
+    },
+
+
 }
