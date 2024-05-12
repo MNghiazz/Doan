@@ -88,7 +88,7 @@ router.get(`/`, async (req, res) => {
 			sortBy[sort[0]] = "asc";
 		}
 
-		const movies = await Movie.find({ name: { $regex: search, $options: "i" } })
+		const movies = await products.find({ name: { $regex: search, $options: "i" } })
 			.where("genre")
 			.in([...genre])
 			.sort(sortBy)
