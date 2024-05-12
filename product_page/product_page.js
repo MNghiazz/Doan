@@ -129,7 +129,7 @@ function listPage() {
 
 
 
-fetchData(url.productsId(productId), function(bookDetail) {
+fetchData(url.productsId(productId),null,  function(bookDetail) {
     const {
         id, 
             name, 
@@ -154,8 +154,7 @@ fetchData(url.productsId(productId), function(bookDetail) {
     bookInf.innerHTML = `
         <h1 class="book-title" style="color: #54504e;">${name}</h1>
         <p class="author-categories">
-            <a class="author me-3">${authorName}</a>
-                
+            <a class="author me-3">${authorName}</a>      
         </p>
         
         <p class="function-button">

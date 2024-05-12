@@ -32,30 +32,35 @@ const storage = multer.diskStorage({
 
 const uploadOptions = multer({ storage: storage});
 
-const verifyToken = (req, res, next) => {
-    const token = req.headers['authorization'];
-    if (!token) return res.status(401).json({ message: 'Token is required' });
 
-    jwt.verify(token, process.env.secret, (err, decoded) => {
-        if (err) return res.status(401).json({ message: 'Invalid token' });
+
+
+
+// Middleware function to extract userId from JWT token
+function extractUserId(req, res, next) {
+    if (!req.headers.authorization || !req.headers.authorization.startsWith('Bearer ')) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    const token = req.headers.authorization.split(' ')[1];
+
+    try {
+        const decoded = jwt.verify(token, process.env.secret);
         req.userId = decoded.userId;
         next();
-    });
-};
-
-// Route to get logged-in user's information
-router.get('/me', verifyToken, async (req, res) => {
-    try {
-        const user = await User.findById(req.userId).select('-passwordHash');
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-        res.json({ user });
     } catch (error) {
-        console.error('Error:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        return res.status(401).json({ message: 'Unauthorized' });
     }
+}
+
+// Example route that uses the middleware to extract userId
+router.get('/profile', extractUserId, async (req, res) => {
+    const userId = req.userId;
+    // Perform operations using the userId
+    res.json({ userId });
 });
+
+
 
 
 router.get(`/`, async (req, res) => {
@@ -77,23 +82,6 @@ router.get('/:id', async (req, res) => {            //find user by id
 })
 
 
-router.post(`/`, async (req, res) => {      //create user
-    let user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        passwordHash: bcrypt.hashSync(req.body.password, 10),
-        phone: req.body.phone,
-        isAdmin: req.body.isAdmin  
-    });
-
-    user = await user.save();
-    if(!user) {
-        return res.status(404).send('the user cannot be created');
-    }
-    
-    res.send(user);
-})
-
 router.post(`/register`, async (req, res) => {      //create user
     let user = new User({
         name: req.body.name,
@@ -111,6 +99,8 @@ router.post(`/register`, async (req, res) => {      //create user
     res.send(user);
 })
 
+
+
 router.post('/login', async (req, res) => {
     const user = await User.findOne({email: req.body.email});
     const secret = process.env.secret;
@@ -127,7 +117,7 @@ router.post('/login', async (req, res) => {
             },
             secret,
             {expiresIn: '1w'}               // a secret line to prevent decode ?
-        )
+        );
         
         res.status(200).send({user: user.email, token: token})
     }else {
