@@ -8,6 +8,11 @@ const authJwt = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handler');
 require('dotenv/config');
 
+//search
+const search = require("./routers/product_router");
+//end search
+
+
 
 app.use(cors());
 app.options('*', cors());
@@ -50,3 +55,4 @@ mongoose.connect(process.env.CONNECTION_STRING)
 app.listen(3000, () => {
     console.log('server is running http://localhost:3000');
 })
+

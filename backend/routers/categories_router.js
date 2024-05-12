@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Category} = require('../models/category');
 const mongoose = require('mongoose');
-const {subCategory} = require('../models/subCategoroy');
+const {subCategory} = require('../models/subCategory');
 
 
 router.get(`/`, async (req, res) => {
