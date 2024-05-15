@@ -131,7 +131,7 @@ function listPage() {
 
 fetchData(url.productsId(productId),null,  function(bookDetail) {
     const {
-        id, 
+            id, 
             name, 
             description, 
             image, 
@@ -169,6 +169,10 @@ fetchData(url.productsId(productId),null,  function(bookDetail) {
         window.location.href = `/tatcasach.html?authors=${authorId}`;
     });
     bookInformation.appendChild(bookInf);
+
+    document.getElementById('rentbtn').addEventListener('click', function () {
+        addBookToCart(id);
+    })
 
     bookDetail.category.forEach(category => {
         const categoryLink = document.createElement('a');
@@ -236,4 +240,18 @@ fetchData(url.productsId(productId),null,  function(bookDetail) {
     bookContent.appendChild(bookWrap);
 
 });
+
+
+function addBookToCart(bookId) {
+    
+    var storedBooks = JSON.parse(localStorage.getItem('books')) || [];
+    
+    
+    storedBooks.push(bookId);
+    
+    
+    localStorage.setItem('books', JSON.stringify(storedBooks));
+}
+
+
 

@@ -43,7 +43,7 @@ if(token) {
         } = userInfo;
     
         const avatarImg = document.getElementById('avatar')
-        console.log(avatar);
+        document.getElementById('user-name').innerHTML = name;
     
         if(avatar) {
             avatarImg.src = avatar;

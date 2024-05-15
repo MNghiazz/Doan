@@ -17,7 +17,7 @@ if (category) {
     fetchDataWithAuthor(author);
 } else {
     // Case 1: Render all books
-    renderAllBooks();
+    fetchDataAllBook();
 }
 
 
@@ -25,7 +25,7 @@ function fetchDataWithAuthor() {
     
     
 
-    fetchData(url.productWithAuthor(author), function (mainProduct) {
+    fetchData(url.productWithAuthor(author),null, function (mainProduct) {
 
         for(let i =0; i < 20; i++) {
             const {
@@ -72,7 +72,7 @@ function fetchDataWithAuthor() {
 
 function fetchDataCategory() {
 
-    fetchData(url.productWithCategories(category), function (mainProduct) {
+    fetchData(url.productWithCategories(category),null, function (mainProduct) {
 
         for(let i =0; i < 20; i++) {
             const {
@@ -121,7 +121,7 @@ function fetchDataCategory() {
 
 function fetchDataAllBook() {
 
-    fetchData(url.products(), function (mainProduct) {
+    fetchData(url.products(),null, function (mainProduct) {
 
         for(let i =0; i < 20; i++) {
             const {

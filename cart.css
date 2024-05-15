@@ -1,0 +1,110 @@
+
+main .cart-table {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.delete-button {
+    float: right;
+    
+}
+
+
+.cart-title {
+    font-size: 2em;
+    color:#727272;
+}
+
+.divider-y {
+    
+    border-bottom: 2px solid #e5e5e5;
+    border-radius: 5px;
+}
+
+.confirm-rent {
+    float: right;
+}
+
+
+.book-container li {
+    min-width: 600px;
+    padding: 20px;
+    display: flex;
+}
+
+.table-container img{
+    width: 100px;
+    margin-right: 20px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .35);
+    -webkit-transition: -webkit-transform .4s ease-out;
+    -moz-transition: -moz-transform .4s ease-out;
+    -ms-transition: -ms-transform .4s ease-out;
+    transition: transform .4s ease-out;
+}
+
+.table-container img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+
+.book-details {
+    margin-left: 10px; /* Adjust margin as needed */
+    width: 100%;
+}
+
+
+
+.book-info {
+    margin-bottom: 5px;
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.book-info .book-name {
+    font-size: 1.9rem;
+    font: 18px / 24px Arial, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+}
+
+.book-info .book-name:hover {
+    color: #ed4259;
+    cursor: pointer;
+}
+
+.book-info .author-name {
+    color: #a6a6a6;
+    line-height: 16px;
+    margin-top: 15px;
+    font-size: 0.95em;
+}
+
+.book-info .author-name:hover {
+    color: #262626;
+    cursor: pointer;
+}
+
+.book-name,
+.author-name {
+    display: block;
+}
+
+.categories {
+    margin-top: 15px;
+}
+
+.categories .category,
+.categories em {
+    margin-left: 3px;
+    margin-right: 3px;
+    color: #a6a6a6;
+    line-height: 16px;
+}
+
+.categories .category:hover {
+    color: #262626;
+    cursor: pointer;
+}
