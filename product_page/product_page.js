@@ -1,5 +1,7 @@
 import { fetchData, url } from "../api.js";
 
+import pdfjsDist from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/+esm'
+
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
@@ -27,6 +29,7 @@ function changeTab(tabIndex) {
     } else if (tabIndex === 2) {
         
         document.getElementById('catalogContent').style.display = 'block';
+    } else if (tabIndex === 3) {
     }
 }
 
@@ -125,11 +128,7 @@ function listPage() {
 }
 
 
-
-
-
-
-fetchData(url.productsId(productId),null,  function(bookDetail) {
+fetchData(url.productsId(productId),null,  async function(bookDetail) {
     const {
         id, 
             name, 
@@ -234,6 +233,12 @@ fetchData(url.productsId(productId),null,  function(bookDetail) {
     </div>
     `;
     bookContent.appendChild(bookWrap);
+
+    // Write code to trigger the click event on <a> tag have id "rentbtn", then a pdf emded will be shown
+    const readbtn = bookInf.querySelector("#readbtn");
+    readbtn.addEventListener("click", function() {
+        window.location.href = '../book-reading-page/viec-lang_ngo-tat-to.pdf';
+    });
 
 });
 
