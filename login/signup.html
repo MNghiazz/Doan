@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Signup</title>
     <link rel="stylesheet" href="login_signup.css">
 </head>
+
 <body>
     <div class="container">
         <div class="signup">
-            <h1>Signup</h1>
+            <img src="../icon/library-svgrepo-com.svg" alt="logo" class="logo" />
+            <h1>Sign Up</h1>
             <form id="signupForm">
                 <input type="text" placeholder="Name" id="signupName" required>
                 <input type="email" placeholder="Email" id="signupEmail" required>
                 <input type="password" placeholder="Password" id="signupPassword" required>
                 <input type="text" placeholder="Phone" id="signupPhone" required>
-                <button type="submit">Signup</button>
+                <button type="submit">Sign Up</button>
             </form>
-
+            <p style="text-align: center; color: #696969; font-size: 14px;">Have an account?
+                <a href="./login.html" style="text-decoration: none; color: #4192EF; font-weight: 500;">Log in</a>
+            </p>
         </div>
-        
+
     </div>
-    <div id="successMessage"><p>Tạo tài khoản thành công, về lại <a href="login.html">Login</a>?</p></div>
+    <div id="successMessage">
+        <p>Tạo tài khoản thành công, về lại <a href="login.html">Login</a>?</p>
+    </div>
     <script src="signup.js"></script>
 </body>
+
 </html>

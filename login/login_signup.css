@@ -8,10 +8,20 @@ body {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    margin: 10px auto;
 }
 
 h1 {
-    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #696969;
 }
 
 form {
@@ -22,21 +32,22 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
     display: block;
-    width: 100%;
+    width: 95%;
     margin-bottom: 10px;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
-    width: 100%;
+    width: 99%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #4192EF;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 14px;
 }
 
 button:hover {
