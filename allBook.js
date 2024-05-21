@@ -25,7 +25,7 @@ function fetchDataWithAuthor() {
     
     
 
-    fetchData(url.productWithAuthor(author), function (mainProduct) {
+    fetchData(url.productWithAuthor(author),null, function (mainProduct) {
 
         for(let i =0; i < 20; i++) {
             const {
