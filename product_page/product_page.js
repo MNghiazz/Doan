@@ -11,6 +11,16 @@ const producSession = document.querySelector("[product-session]");
 const bookInformation = document.querySelector("[book-information]")
 const bookContent = document.querySelector("[book-content]")
 
+// Print out the book id from the curren url
+function getBookId() {
+    var currentUrl = window.location.href;
+    var url = new URL(currentUrl);
+    var bookId = url.searchParams.get("id");
+    console.log("Book ID: ", bookId);
+    return bookId;
+}
+getBookId();
+
 function changeTab(tabIndex) {
     // Hide all content divs
 
@@ -137,7 +147,8 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
             author : { name: authorName, id: authorId},
             category : [{name: categoryName, id: categoryId}],
             rating,
-            numReviews
+            numReviews,
+            pdf
     } = bookDetail;
 
     const bookImg = document.createElement('div');
@@ -237,7 +248,14 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
     // Write code to trigger the click event on <a> tag have id "rentbtn", then a pdf emded will be shown
     const readbtn = bookInf.querySelector("#readbtn");
     readbtn.addEventListener("click", function() {
-        window.location.href = '../book-reading-page/viec-lang_ngo-tat-to.pdf';
+        if (pdf) {
+            window.location.href = pdf;
+        } else {
+            var title = "Oh no :(";
+            var body = "Nội dung của sách chưa được cập nhật. Các bạn thông cảm hén <3";
+
+            window.alert(title + "\n" + body);
+        }
     });
 
 });
