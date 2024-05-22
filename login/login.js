@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (response.ok) {
                 localStorage.setItem('token', data.token);
                 // Redirect to the homepage
-                window.location.href = '/index.html';
+                window.location.href = '../index.html';
             }
 
         } catch (error) {
