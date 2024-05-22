@@ -56,12 +56,16 @@ function extractUserId(req, res, next) {
 // Example route that uses the middleware to extract userId
 router.get('/profile', extractUserId, async (req, res) => {
     const userId = req.userId;
-    // Perform operations using the userId
-    res.json({ userId });
+    try {
+        const user = await User.findById(userId).select('name email phone'); // Chọn các trường cần lấy
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 });
-
-
-
 
 router.get(`/`, async (req, res) => {
     const userList = await User.find().select('-passwordHash');     //find all of the user
@@ -156,6 +160,39 @@ router.delete('/:id', (req, res) => {
         return res.status(400).json({success: false, error: err});
     })
 })
+
+router.put('/update-profile', extractUserId, uploadOptions.single('avatar'), async (req, res) => {
+    const userId = req.userId;
+    const { name, email, phone } = req.body;
+    let avatarPath = '';
+
+    if (req.file) {
+        avatarPath = `${req.protocol}://${req.get('host')}/public/upload/user/${req.file.filename}`;
+    }
+
+    const updateFields = {
+        name: name,
+        email: email,
+        phone: phone,
+    };
+
+    if (avatarPath) {
+        updateFields.avatar = avatarPath;
+    }
+
+    try {
+        const user = await User.findByIdAndUpdate(userId, updateFields, { new: true });
+
+        if (!user) {
+            return res.status(404).send('Không thể cập nhật thông tin người dùng');
+        }
+
+        res.send(user);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 
 
 module.exports = router;

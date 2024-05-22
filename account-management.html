@@ -7,8 +7,8 @@
     <title>Quản lý tài khoản</title>
     <link rel="stylesheet" href="account-management.css" />
     <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdnjs.cludflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cludflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" -->
+    <!-- integrity="sha512-..." crossorigin="anonymous" /> -->
 </head>
 
 <body style="background-color: #F0F0F0;">
@@ -16,13 +16,14 @@
     <!-- Header -->
     <header class="header  py-2">
         <div class=" d-flex flex-row align-items-center">
-            <img src="icon/library-svgrepo-com.svg" alt="library icon" width="50" class="ms-3 web-icon">
+            <a href="./index.html"><img src="icon/library-svgrepo-com.svg" alt="library icon" width="50"
+                    class="ms-3 web-icon"></a>
             <button class="btn btn-outline-secondary d-lg-none ms-3" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Menu</button>
 
             <div class="divider"></div>
 
-            <div class="wrapper me-auto">
+            <div class="wrapper me-auto" style="display: flex; flex-direction: row;">
                 <div class="search-mobile-button">
                     <button id="searchButtonMobile" type="button" name="searchButtonMobile">
                         <svg viewBox="0 0 24 24">
@@ -41,6 +42,9 @@
                         </svg>
                     </button>
                 </div>
+                <!-- <button type="button" class="btn btn-success me-3 btn-sm ">
+                    <a href="confirm_buy.html" style="text-decoration: none; color: #F0F0F0; display: flex; justify-content: end;"><strong class="cart-text">Sách đã chọn</strong></a>
+                </button> -->
             </div>
 
 
@@ -83,136 +87,47 @@
 
         <!-- Content -->
         <div class="main-container container-sm">
-            
+
             <!-- Hồ sơ -->
             <div class="MyProfile">
                 <h2 class="fw-light h5" style="color: #000;">Thông tin tài khoản</h2>
                 <div class="my-profile mt-3 d-flex flex-column">
-                    <label>Ảnh đại diện </label>
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle shadow-4-strong" id="avatar" src="image/sample1.jpg" width="70"
-                            height="70" style="margin-left: 100px;">
-                        <button type="button" class="btn btn-success ms-3 btn-sm"><strong class="cart-text">Thay đổi ảnh
-                                đại diện</strong></button>
-                    </div>
-                    <br>
-                    <label for="username">Tên đăng nhập </label>
-                    <input type="text" class="username mb-0" name="username" value="leo_cute1111"
-                        style="max-width: 500px;">
-                    <br>
-                    <label for="name">Tên </label>
-                    <input type="text" class="name mb-0" name="name" value="Leonardo Dicaprio"
-                        style="max-width: 500px;">
-                    <br>
-                    <label for="phone-number">Số điện thoại </label>
-                    <input type="text" class="phone-number mb-0" name="phone-number" value="0123456789"
-                        style="max-width: 500px;" pattern="[0-9]{10}">
-                    <br>
-                    <label for="address">Địa chỉ </label>
-                    <input type="text" class="address mb-0" name="address" value="666, đường Deadline, thành phố Sleepy"
-                        style="max-width: 500px;">
+                    <form id="profileForm" class="my-profile mt-3 d-flex flex-column">
+                        <label for="avatarInput">Ảnh đại diện </label>
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle shadow-4-strong" id="avatar" src="image/sample1.jpg" width="70"
+                                height="70" style="margin-left: 100px;">
+                            <input type="file" id="avatarInput" name="avatar" style="display: none;">
+                            <button type="button" class="btn btn-success ms-3 btn-sm"
+                                onclick="document.getElementById('avatarInput').click();">
+                                <strong class="cart-text">Thay đổi ảnh đại diện</strong>
+                            </button>
+                        </div>
+                        <br>
+                        <label for="name">Tên</label>
+                        <input type="text" id="name" name="name" value="leo_cute1111" style="max-width: 500px;"
+                            autocomplete="name">
+                        <br>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="leo_cute1111@gmail.com"
+                            style="max-width: 500px;" autocomplete="email">
+                        <br>
+                        <label for="phone-number">Số điện thoại </label>
+                        <input type="text" id="phone-number" name="phone" value="0123456789" style="max-width: 500px;"
+                            pattern="[0-9]{10}" autocomplete="tel">
+                        <br>
+                        <button type="submit" class="btn btn-success me-3 btn-sm" style="max-width: 100px;"><strong
+                                class="cart-text">Lưu</strong></button>
+                    </form>
                     <br>
                 </div>
-                <button type="button" class="btn btn-success me-3 btn-sm "><strong
-                        class="cart-text">Lưu</strong></button><br>
                 <p style="color: #fff">...</p>
             </div>
-
-            <!-- Đổi mật khẩu -->
-            <div class="ChangePassword">
-                <h2 class="fw-light h5" style="color: #000;">Thay đổi mật khẩu</h2>
-                <div class="change-password mt-3 d-flex flex-column">
-                    <label for="old-pwd">Nhập mật khẩu cũ </label>
-                    <input type="password" class="old-pwd" name="old-pwd" style="max-width: 500px;">
-                    <br>
-                    <label for="new-pwd">Nhập mật khẩu mới </label>
-                    <input type="password" class="new-pwd" name="new-pwd" style="max-width: 500px;">
-                    <br>
-                    <label for="new-pwd-again">Xác nhận mật khẩu mới </label>
-                    <input type="password" class="new-pwd-again" name="new-pwd-again" style="max-width: 500px;">
-                    <br>
-                </div>
-                <button type="button" class="btn btn-success me-3 btn-sm "><strong class="cart-text">Lưu mật
-                        khẩu</strong></button><br>
-                <p style="color: #fff">...</p>
-            </div>
-
-            <!-- Lịch sử mượn/trả sách -->
-            <div class="History">
-                <h2 class="fw-light h5" style="color: #626262;">Lịch sử mượn/trả sách</h2>
-                <div class="RA-books mt-3 d-flex ">
-
-                    <div class="recent-list list-slider draggable d-flex flex-row">
-                        <div class="card me-3 border-0" style="width: 180px;">
-                            <img src="image/choToiXin1VeDiTuoiTho.jpg" width="189" class="card-img-top"
-                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
-                            <div class="card-body">
-                                <p class="title mb-0">Cho Tôi Xin Một Vé Đi Tuổi Thơ</p>
-                                <p class="author">Nguyễn Nhật Ánh</p>
-                                <p class="borrow-day">Ngày mượn sách: 20/03/2024</p>
-                                <p class="return-day">Hạn trả sách: 20/04/2023</p>
-                                <p class="quantity">Số lượng: 5</p>
-                                <p class="status">Tình trạng: Chưa trả</p>
-                            </div>
-                        </div>
-                        <div class="card me-3 border-0" style="width: 180px;">
-                            <img src="image/DoiThua.jpg" width="189" class="card-img-top"
-                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
-                            <div class="card-body">
-                                <p class="title mb-0">Đời Thừa</p>
-                                <p class="author">Nam Cao</p>
-                                <p class="borrow-day">Ngày mượn sách: 19/02/2024</p>
-                                <p class="return-day">Hạn trả sách: 19/03/2024</p>
-                                <p class="quantity">Số lượng: 1</p>
-                                <p class="status">Tình trạng: Chưa trả</p>
-                            </div>
-                        </div>
-                        <div class="card me-3 border-0" style="width: 180px;">
-                            <img src="image/Hippi_NhungKeLangDu.jpg" width="10" class="card-img-top"
-                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
-                            <div class="card-body">
-                                <p class="title mb-0">Hippi - Những Kẻ Lãng Du</p>
-                                <p class="author">Paulo Coelho</p>
-                                <p class="borrow-day">Ngày mượn sách: 26/05/2023</p>
-                                <p class="return-day">Hạn trả sách: 26/06/2023</p>
-                                <p class="quantity">Số lượng: 1</p>
-                                <p class="status">Tình trạng: Đã trả</p>
-                            </div>
-                        </div>
-                        <div class="card me-3 border-0" style="width: 180px;">
-                            <img src="image/kafka_ben_bo_bien001.jpg" width="10" class="card-img-top"
-                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
-                            <div class="card-body">
-                                <p class="title mb-0">Kafka Bên Bờ Biển</p>
-                                <p class="author">Haruki Murakami</p>
-                                <p class="borrow-day">Ngày mượn sách: 27/06/2023</p>
-                                <p class="return-day">Hạn trả sách: 27/07/2023</p>
-                                <p class="quantity">Số lượng: 5</p>
-                                <p class="status">Tình trạng: Đã trả</p>
-                            </div>
-                        </div>
-                        <div class="card me-3 border-0" style="width: 180px;">
-                            <img src="image/MotHoaSiPhuThe.jpg" width="10" class="card-img-top"
-                                alt="a picture of Arsene Lupin book" name="ArseneLupin">
-                            <div class="card-body">
-                                <p class="title mb-0">Một Họa Sĩ Phù Thế</p>
-                                <p class="author">Kazuo Ishiguro</p>
-                                <p class="borrow-day">Ngày mượn sách: 21/08/2023</p>
-                                <p class="return-day">Hạn trả sách: 21/09/2023</p>
-                                <p class="quantity">Số lượng: 1</p>
-                                <p class="status">Tình trạng: Đã trả</p>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            
             <br>
-            <button type="button" class="btn btn-danger btn-lg d-block mx-auto"><strong class="cart-text">Đăng xuất</strong></button>
+            <button type="button" class="btn btn-danger btn-lg d-block mx-auto"><strong class="cart-text">Đăng
+                    xuất</strong></button>
             <p style="color: #fff;">...</p>
-        
+
         </div>
     </main>
 
@@ -232,8 +147,9 @@
             <li><a class="terms" href="#">Terms and Conditions</a></li>
         </ul>
     </footer>
-    
+
     <script src="js/bootstrap.js"></script>
+    <script src="./account-management.js"></script>
 </body>
 
 </html>
