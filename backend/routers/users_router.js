@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const {User} = require('../models/user');
+const { User } = require('../models/user');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
 
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
         const isValid = FILE_TYPE_MAP[file.mimetype];
         let uploadError = new Error('invalid image type');
 
-        if(isValid) {
+        if (isValid) {
 
             uploadError = null;
         }
@@ -26,11 +26,11 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         const fileName = file.originalname.split(' ').join('-');
         const extension = FILE_TYPE_MAP[file.mimetype];
-        cb(null, `${fileName}-${Date.now()}.${extension}`)
+        cb(null, `${fileName}`)
     }
 })
 
-const uploadOptions = multer({ storage: storage});
+const uploadOptions = multer({ storage: storage });
 
 
 
@@ -53,11 +53,17 @@ function extractUserId(req, res, next) {
     }
 }
 
-// Example route that uses the middleware to extract userId
 router.get('/profile', extractUserId, async (req, res) => {
     const userId = req.userId;
+    // Perform operations using the userId
+    res.json({ userId });
+});
+
+// Example route that uses the middleware to extract userId
+router.get('/account', extractUserId, async (req, res) => {
+    const userId = req.userId;
     try {
-        const user = await User.findById(userId).select('name email phone'); // Chọn các trường cần lấy
+        const user = await User.findById(userId).select('name email phone avatar'); // Chọn các trường cần lấy
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -70,19 +76,19 @@ router.get('/profile', extractUserId, async (req, res) => {
 router.get(`/`, async (req, res) => {
     const userList = await User.find().select('-passwordHash');     //find all of the user
 
-    if(!userList){
-        res.status(500).json({success: false})
+    if (!userList) {
+        res.status(500).json({ success: false })
     }
     res.send(userList);
 })
 
 router.get('/:id', async (req, res) => {            //find user by id
     const user = await User.findById(req.params.id).select('-passwordHash');
-    
-    if(!user) {
-        res.status(500).json({message: 'the user with the id given was not found'});
+
+    if (!user) {
+        res.status(500).json({ message: 'the user with the id given was not found' });
     }
-    res.status(200).send(user); 
+    res.status(200).send(user);
 })
 
 
@@ -92,39 +98,39 @@ router.post(`/register`, async (req, res) => {      //create user
         email: req.body.email,
         passwordHash: bcrypt.hashSync(req.body.password, 10),
         phone: req.body.phone,
-        isAdmin: req.body.isAdmin  
+        isAdmin: req.body.isAdmin
     });
 
     user = await user.save();
-    if(!user) {
+    if (!user) {
         return res.status(404).send('the user cannot be created');
     }
-    
+
     res.send(user);
 })
 
 
 
 router.post('/login', async (req, res) => {
-    const user = await User.findOne({email: req.body.email});
+    const user = await User.findOne({ email: req.body.email });
     const secret = process.env.secret;
-    
-    if(!user) {
+
+    if (!user) {
         return res.status(400).send('The user is not found');
     }
 
-    if(user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
+    if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
         const token = jwt.sign(
             {
                 userId: user.id,
                 isAdmin: user.isAdmin
             },
             secret,
-            {expiresIn: '1w'}               // a secret line to prevent decode ?
+            { expiresIn: '1w' }               // a secret line to prevent decode ?
         );
-        
-        res.status(200).send({user: user.email, token: token})
-    }else {
+
+        res.status(200).send({ user: user.email, token: token })
+    } else {
         res.status(400).send('password is wrong')
     }
 
@@ -150,25 +156,20 @@ router.get(`/get/count`, async (req, res) => {
 
 router.delete('/:id', (req, res) => {
     User.findByIdAndDelete(req.params.id).then(user => {            //delete a user by id
-        if(user) {
-            return res.status(200).json({success: true, message: 'the user has been deleted'});
+        if (user) {
+            return res.status(200).json({ success: true, message: 'the user has been deleted' });
         }
         else {
-            return res.status(404).json({success: false, message: 'user not found'});
+            return res.status(404).json({ success: false, message: 'user not found' });
         }
-    }).catch(err =>{
-        return res.status(400).json({success: false, error: err});
+    }).catch(err => {
+        return res.status(400).json({ success: false, error: err });
     })
 })
 
 router.put('/update-profile', extractUserId, uploadOptions.single('avatar'), async (req, res) => {
     const userId = req.userId;
     const { name, email, phone } = req.body;
-    let avatarPath = '';
-
-    if (req.file) {
-        avatarPath = `${req.protocol}://${req.get('host')}/public/upload/user/${req.file.filename}`;
-    }
 
     const updateFields = {
         name: name,
@@ -176,8 +177,9 @@ router.put('/update-profile', extractUserId, uploadOptions.single('avatar'), asy
         phone: phone,
     };
 
-    if (avatarPath) {
-        updateFields.avatar = avatarPath;
+    if (req.file) {
+        updateFields.avatar = req.file.path; // Sử dụng req.file.path để lấy đường dẫn của avatar
+        console.log(req.file.filename);
     }
 
     try {

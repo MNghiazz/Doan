@@ -93,11 +93,12 @@
                 <h2 class="fw-light h5" style="color: #000;">Thông tin tài khoản</h2>
                 <div class="my-profile mt-3 d-flex flex-column">
                     <form id="profileForm" class="my-profile mt-3 d-flex flex-column">
-                        <label for="avatarInput">Ảnh đại diện </label>
                         <div class="d-flex align-items-center">
+                            <label for="avatarInput">Ảnh đại diện </label>
                             <img class="rounded-circle shadow-4-strong" id="avatar" src="image/sample1.jpg" width="70"
                                 height="70" style="margin-left: 100px;">
-                            <input type="file" id="avatarInput" name="avatar" style="display: none;">
+                            <input type="file" id="avatarInput" name="avatar" style="display: none;"
+                                onchange="previewAvatar(event);">
                             <button type="button" class="btn btn-success ms-3 btn-sm"
                                 onclick="document.getElementById('avatarInput').click();">
                                 <strong class="cart-text">Thay đổi ảnh đại diện</strong>
@@ -150,6 +151,16 @@
 
     <script src="js/bootstrap.js"></script>
     <script src="./account-management.js"></script>
+    <script>
+        function previewAvatar(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const avatar = document.getElementById('avatar');
+                avatar.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
 </body>
 
 </html>
