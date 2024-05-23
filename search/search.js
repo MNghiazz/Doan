@@ -51,6 +51,11 @@ function displaySearchResults(results) {
                 </div>
             </div>
         `;
+        bookElement.addEventListener('click', function() {
+            // Điều hướng đến trang chi tiết sản phẩm với ID của sản phẩm được nhấp vào
+            window.location.href = `/product_page/product_page.html?id=${book._id}`;
+        });
+        
         searchResultsContainer.appendChild(bookElement);
     });
 }
