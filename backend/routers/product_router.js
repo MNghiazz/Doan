@@ -48,7 +48,7 @@ router.get(`/`, async (req, res) => {
         filter.author = authorId;
     }
 
-    // Tìm kiếm theo tên sách
+    /* Tìm kiếm theo tên sách
     if (req.query.name) {
         const search = req.query.name;
         filter.name = { $regex: search, $options: "i" };  // Tìm kiếm theo tên sách, không phân biệt chữ hoa chữ thường
@@ -60,7 +60,7 @@ router.get(`/`, async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: 'Internal server error' });
-    }
+    } */
 });
 
 
