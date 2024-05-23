@@ -23,6 +23,7 @@ async function fetchSearchResults(query) {
         }
         const results = await response.json();
         console.log('Results:', results);
+        
         displaySearchResults(results);
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
@@ -32,7 +33,6 @@ async function fetchSearchResults(query) {
 function displaySearchResults(results) {
     const searchResultsContainer = document.getElementById('searchResults');
     searchResultsContainer.innerHTML = '';
-
     if (results.length === 0) {
         searchResultsContainer.innerHTML = '<li>Không tìm thấy sách nào.</li>';
         return;
