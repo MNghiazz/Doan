@@ -38,5 +38,9 @@ export const url = {
         return `http://localhost:3000/api/v1/users/${id}`
     },
 
+    search(query) {
+        return `http://localhost:3000/api/v1/search?name=${query}`;
+    }
+
 
 }
