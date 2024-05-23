@@ -1,7 +1,5 @@
 import { fetchData, url } from "../api.js";
 
-import pdfjsDist from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/+esm'
-
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
@@ -10,6 +8,7 @@ const productId = urlParams.get('id');
 const producSession = document.querySelector("[product-session]");
 const bookInformation = document.querySelector("[book-information]")
 const bookContent = document.querySelector("[book-content]")
+const chaptersSession = document.querySelector("[chapters-session]")
 
 // Print out the book id from the curren url
 function getBookId() {
@@ -34,10 +33,8 @@ function changeTab(tabIndex) {
     
     // Show the selected content div based on the clicked link
     if (tabIndex === 1) {
-
         document.getElementById('bookContent').style.display = 'block';
     } else if (tabIndex === 2) {
-        
         document.getElementById('catalogContent').style.display = 'block';
     } else if (tabIndex === 3) {
     }
@@ -148,7 +145,8 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
             category : [{name: categoryName, id: categoryId}],
             rating,
             numReviews,
-            pdf
+            pdf,
+            chapters
     } = bookDetail;
 
     const bookImg = document.createElement('div');
@@ -245,18 +243,46 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
     `;
     bookContent.appendChild(bookWrap);
 
+    function loadChapterList() {
+        if (!chapters || chapters.length === 0) {
+            const chapterItem = document.createElement('li');
+            chapterItem.innerHTML = `Nội dung chương sách chưa được cập nhật.`;
+            chaptersSession.appendChild(chapterItem);
+            return;
+        }
+        for (let i = 0; i < chapters.length; i++) {
+            const pdfReaderPage = "../pdf_reader_page/pdf_reader_page.html";
+            const chapter = chapters[i];
+            const title = chapter.name;
+            const startPage = chapter.startPage;
+            const chapterItem = document.createElement('li');
+            chapterItem.innerHTML = `
+            <li>
+                <a href="${pdfReaderPage}" class="chapter-link">
+                    <p style="vertical-align: inherit">
+                        Chương ${i+1}&nbsp;:&nbsp;${title}
+                    </p>
+                </a>
+            </li>
+            `;
+            chaptersSession.appendChild(chapterItem);
+        }
+    }
+    loadChapterList();
+
     // Write code to trigger the click event on <a> tag have id "rentbtn", then a pdf emded will be shown
     const readbtn = bookInf.querySelector("#readbtn");
     readbtn.addEventListener("click", function() {
         if (pdf) {
-            window.location.href = pdf;
+            window.open(pdf, '_blank');
         } else {
             var title = "Oh no :(";
             var body = "Nội dung của sách chưa được cập nhật. Các bạn thông cảm hén <3";
-
             window.alert(title + "\n" + body);
         }
     });
 
+    // Xuất link pdf với thứ tự trang bắt đầu của chương cho từng chương
+    module.exports = { pdf }
 });
 
