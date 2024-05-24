@@ -11,6 +11,14 @@ function getChapterInfo() {
   return { bookTitle, chapterIndex, pdfUrl };
 }
 
+function loadPageTitle({title}) {
+  if (!title) {
+    console.error("Title is required");
+    return;
+  }
+  document.getElementsByTagName('title')[0].innerText = title;
+}
+
 function loadBookTitle({title}) {
   if (!title) {
     console.error("Title is required");
@@ -119,6 +127,7 @@ function loadPdfReader({url, chapterIndex}) {
 
 function loadPage() {
   const {bookTitle, chapterIndex, pdfUrl} = getChapterInfo();
+  loadPageTitle({title: bookTitle});
   loadBookTitle({title: bookTitle});
   loadPdfReader({url: pdfUrl, chapterIndex: chapterIndex});
 }
