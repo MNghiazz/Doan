@@ -31,7 +31,7 @@ const ordersRouter = require('./routers/orders_router');
 const authorsRouter = require('./routers/authors_router');
 const subcategoryRouter = require('./routers/subCategory_router');
 const userAuthRouter = require('./routers/userAuthRouter');
-const commentsRoutes = require('./routes/comments');
+const commentsRoutes = require('./routers/comments_router');
 
 
 app.use(`${api}/products`, productRouter);
