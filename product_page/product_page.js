@@ -252,16 +252,12 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
         }
         for (let i = 0; i < chapters.length; i++) {
             function handleClick() {
-                const url = `../pdf_reader_page/pdf_reader_page.html?pdf=${pdf}&startPage=${chapters[i].startPage}`;
+                const url = `../pdf_reader_page/pdf_reader_page.html?name=${name}&startPage=${chapters[i].startPage}&pdf=${pdf}`;
                 window.open(url, '_blank');
-                console.log("Open chapter: ", i);
             }
-
-            const url = "../pdf_reader_page/pdf_reader_page.html";
 
             const chapter = chapters[i];
             const title = chapter.name;
-            const startPage = chapter.startPage;
 
             // Create a new chapter item
             const chapterItem = document.createElement('li');
