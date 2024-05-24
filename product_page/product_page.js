@@ -221,7 +221,7 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
             
         </ul>
     </div>
-
+    
     <div class="user-commentWrap">
         <div class="comment-head cf">
             <h3 class="lang">
@@ -231,11 +231,11 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
             </h3>
         </div>
         <div id="comments-section">
-    <h3>Comments</h3>
+    <h3>Tất cả: </h3>
     <div id="comments-list"></div>
     <div id="comment-form">
-        <textarea id="comment-content" placeholder="Add a comment..."></textarea>
-        <button onclick="addComment()">Submit</button>
+        <textarea id="comment-content" placeholder="Nhập tại đây:..."></textarea>
+        <button onclick="addComment()">Đăng</button>
     </div>
 </div>
 
