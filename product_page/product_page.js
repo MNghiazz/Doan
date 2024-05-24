@@ -230,6 +230,15 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
                 <span class="goRatting" onclick="changeBox(2)">Đánh giá</span>
             </h3>
         </div>
+        <div id="comments-section">
+    <h3>Comments</h3>
+    <div id="comments-list"></div>
+    <div id="comment-form">
+        <textarea id="comment-content" placeholder="Add a comment..."></textarea>
+        <button onclick="addComment()">Submit</button>
+    </div>
+</div>
+
     </div>
     `;
     bookContent.appendChild(bookWrap);
