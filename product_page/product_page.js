@@ -251,26 +251,36 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
             return;
         }
         for (let i = 0; i < chapters.length; i++) {
-            const pdfReaderPage = "../pdf_reader_page/pdf_reader_page.html";
+            function handleClick() {
+                const url = `../pdf_reader_page/pdf_reader_page.html?pdf=${pdf}&startPage=${chapters[i].startPage}`;
+                window.open(url, '_blank');
+                console.log("Open chapter: ", i);
+            }
+
+            const url = "../pdf_reader_page/pdf_reader_page.html";
+
             const chapter = chapters[i];
             const title = chapter.name;
             const startPage = chapter.startPage;
+
+            // Create a new chapter item
             const chapterItem = document.createElement('li');
             chapterItem.innerHTML = `
             <li>
-                <a href="${pdfReaderPage}" class="chapter-link">
+                <button class="chapter-item">
                     <p style="vertical-align: inherit">
                         Chương ${i+1}&nbsp;:&nbsp;${title}
                     </p>
-                </a>
+                </button>
             </li>
             `;
+            chapterItem.addEventListener("click", handleClick);
             chaptersSession.appendChild(chapterItem);
         }
     }
     loadChapterList();
 
-    // Write code to trigger the click event on <a> tag have id "rentbtn", then a pdf emded will be shown
+    // Mở trang đầu tiên của sách
     const readbtn = bookInf.querySelector("#readbtn");
     readbtn.addEventListener("click", function() {
         if (pdf) {
@@ -281,8 +291,5 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
             window.alert(title + "\n" + body);
         }
     });
-
-    // Xuất link pdf với thứ tự trang bắt đầu của chương cho từng chương
-    module.exports = { pdf }
 });
 
