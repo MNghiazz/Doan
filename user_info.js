@@ -16,7 +16,7 @@ logoutButton.addEventListener('click', logout);
     // Logout function
 function logout() {
         localStorage.removeItem('token');
-        window.location.href = '/index.html'; // Redirect to the login page
+        window.location.href = './index.html'; // Redirect to the login page
 }
 
 const token = localStorage.getItem('token');

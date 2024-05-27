@@ -8,6 +8,17 @@ const productId = urlParams.get('id');
 const producSession = document.querySelector("[product-session]");
 const bookInformation = document.querySelector("[book-information]")
 const bookContent = document.querySelector("[book-content]")
+const chaptersSession = document.querySelector("[chapters-session]")
+
+// Print out the book id from the curren url
+function getBookId() {
+    var currentUrl = window.location.href;
+    var url = new URL(currentUrl);
+    var bookId = url.searchParams.get("id");
+    console.log("Book ID: ", bookId);
+    return bookId;
+}
+getBookId();
 
 function changeTab(tabIndex) {
     // Hide all content divs
@@ -22,11 +33,10 @@ function changeTab(tabIndex) {
     
     // Show the selected content div based on the clicked link
     if (tabIndex === 1) {
-
         document.getElementById('bookContent').style.display = 'block';
     } else if (tabIndex === 2) {
-        
         document.getElementById('catalogContent').style.display = 'block';
+    } else if (tabIndex === 3) {
     }
 }
 
@@ -125,11 +135,7 @@ function listPage() {
 }
 
 
-
-
-
-
-fetchData(url.productsId(productId),null,  function(bookDetail) {
+fetchData(url.productsId(productId),null,  async function(bookDetail) {
     const {
             id, 
             name, 
@@ -138,7 +144,9 @@ fetchData(url.productsId(productId),null,  function(bookDetail) {
             author : { name: authorName, id: authorId},
             category : [{name: categoryName, id: categoryId}],
             rating,
-            numReviews
+            numReviews,
+            pdf,
+            chapters
     } = bookDetail;
 
     const bookImg = document.createElement('div');
@@ -239,6 +247,50 @@ fetchData(url.productsId(productId),null,  function(bookDetail) {
     `;
     bookContent.appendChild(bookWrap);
 
+    function loadChapterList() {
+        if (!chapters || chapters.length === 0) {
+            const chapterItem = document.createElement('li');
+            chapterItem.innerHTML = `Nội dung chương sách chưa được cập nhật.`;
+            chaptersSession.appendChild(chapterItem);
+            return;
+        }
+        for (let i = 0; i < chapters.length; i++) {
+            function handleClick() {
+                const url = `../pdf_reader_page/pdf_reader_page.html?name=${name}&startPage=${chapters[i].startPage}&pdf=${pdf}`;
+                window.open(url, '_blank');
+            }
+
+            const chapter = chapters[i];
+            const title = chapter.name;
+
+            // Create a new chapter item
+            const chapterItem = document.createElement('li');
+            chapterItem.innerHTML = `
+            <li>
+                <button class="chapter-item">
+                    <p style="vertical-align: inherit">
+                        Chương ${i+1}&nbsp;:&nbsp;${title}
+                    </p>
+                </button>
+            </li>
+            `;
+            chapterItem.addEventListener("click", handleClick);
+            chaptersSession.appendChild(chapterItem);
+        }
+    }
+    loadChapterList();
+
+    // Mở trang đầu tiên của sách
+    const readbtn = bookInf.querySelector("#readbtn");
+    readbtn.addEventListener("click", function() {
+        if (pdf) {
+            window.open(pdf, '_blank');
+        } else {
+            var title = "Oh no :(";
+            var body = "Nội dung của sách chưa được cập nhật. Các bạn thông cảm hén <3";
+            window.alert(title + "\n" + body);
+        }
+    });
 });
 
 

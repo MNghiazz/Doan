@@ -8,13 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
+        <img
+          src="../icon/library-svgrepo-com.svg"
+          alt="logo"
+          class="logo"
+        />
+        <h1>Log In</h1>
         <form id="loginForm" action="POST">
             <input type="email" name="email" placeholder="Enter your Email" id="loginEmail" required>
             <input type="password" name="password" placeholder="Password" id="loginPassword" required>
-            <button type="submit">Login</button>
+            <button type="submit">Log In</button>
         </form>
-        <a href="signup.html">Register</a>
+        <p style="color: #696969; font-size: 14px; text-align: center; margin: 20px 0;">Don't have an account? 
+            <a href="signup.html" style="text-decoration: none; color: #4192EF; font-weight: 500;">Sign up </a>
+        </p>
     </div>
     <script src="login.js"></script>
 </body>

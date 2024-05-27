@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Viewer Demo</title>
+  <link rel="stylesheet" href="pdf_reader_page.css">
+  <!-- Include the PDF.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.mjs" type="module"></script>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.mjs" type="module"></script>
+    <script src="./pdf_reader_page.js" type="module"></script>
+    <h1 id="book-title">Book title</h1>
+   
+    <div>
+      <button id="prev">Previous</button>
+      <button id="next">Next</button>
+      &nbsp; &nbsp;
+      <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
+    </div>
+    
+    <canvas id="pdf-canvas"></canvas>
+</body>
+</html>
