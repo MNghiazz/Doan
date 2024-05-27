@@ -58,7 +58,7 @@
 }
 
 .table-container img{
-    width: 100px;
+    width: 150px;
     margin-right: 20px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, .35);
     -webkit-transition: -webkit-transform .4s ease-out;

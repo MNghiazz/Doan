@@ -1,10 +1,13 @@
 
 import { fetchData, url } from "../api.js";
+import { getUserId, ensureUserId } from "./user_info.js";
+
 
 
 const title = document.querySelector('.cart-title');
 
 const listItem = document.querySelector('.table-container .list-item');
+const submit = document.getElementById('confirm-rent');
 
 function displayBooksInCart() {
     var storedBooks = JSON.parse(localStorage.getItem('books')) || [];
@@ -15,8 +18,10 @@ function displayBooksInCart() {
     
     if (storedBooks.length === 0) {
         title.innerHTML = 'Bạn chưa chọn sách';
+        submit.style.display = 'none';
     } else {
         title.innerHTML = 'Sách đã chọn'
+        submit.style.display = 'block';
         storedBooks.forEach(function(bookId, index) {
             fetchData(url.productsId(bookId),null,  function(bookDetail) {
                 const {
@@ -80,6 +85,112 @@ function displayBooksInCart() {
 }
 
 displayBooksInCart();
+
+
+
+async function postItemsToOrder(cartItems, token, userId) {
+    try {
+        let userOrders = await fetch(`http://localhost:3000/api/v1/orders/user/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(response => response.json());
+
+        console.log(userOrders.length);
+
+        if (userOrders && userOrders.length > 0) {
+            let userOrder = userOrders[0];
+
+            const orderItemsIds = await Promise.all(cartItems.map(async itemId => {
+                const newOrderItem = await fetch('http://localhost:3000/api/v1/order-items', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ product: itemId })
+                }).then(response => response.json());
+
+                return newOrderItem._id;
+            }));
+
+            const updatedOrderItems = userOrder.orderItems.concat(orderItemsIds);
+
+            await fetch(`http://localhost:3000/api/v1/orders/${userOrder._id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ orderItems: updatedOrderItems })
+            });
+
+            console.log('Order updated successfully');
+        } else {
+            const orderItemsIds = await Promise.all(cartItems.map(async itemId => {
+                const newOrderItem = await fetch('http://localhost:3000/api/v1/order-items', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ product: itemId })
+                }).then(response => response.json());
+
+                return newOrderItem._id;
+            }));
+
+            const orderData = {
+                orderItems: orderItemsIds,
+                user: userId,
+            };
+
+            await fetch('http://localhost:3000/api/v1/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(orderData)
+            });
+
+            console.log('Order created successfully');
+        }
+    } catch (error) {
+        console.error('Error posting items to order:', error.message);
+        throw error;
+    }
+}
+
+
+document.querySelector('.confirm-rent').addEventListener('click', async () => {
+    await ensureUserId();
+    const userId = getUserId();
+    const token = localStorage.getItem('token');
+    if (!token) {
+        console.error('No token found. User might not be authenticated.');
+        return;
+    }
+    try {
+        const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
+        
+        
+        // Post items from cart to order
+        await postItemsToOrder(storedBooks,token, userId);
+        
+        // Optionally, clear the cart after posting items to order
+        localStorage.removeItem('books');
+        console.log('Cart cleared');
+        
+        location.reload();
+    } catch (error) {
+        console.error('Error confirming rent:', error.message);
+        // Handle error
+    }
+});
+
 
 
 function removeBookFromCart(bookIdToRemove) {

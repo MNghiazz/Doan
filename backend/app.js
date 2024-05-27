@@ -17,6 +17,7 @@ const api = process.env.API_URL;
 
 
 //middleware
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(authJwt());
@@ -31,6 +32,7 @@ const ordersRouter = require('./routers/orders_router');
 const authorsRouter = require('./routers/authors_router');
 const subcategoryRouter = require('./routers/subCategory_router');
 const userAuthRouter = require('./routers/userAuthRouter');
+const orderItems = require('./routers/order-items');
 const searchRouter = require("./routers/search_router");
 
 
@@ -41,7 +43,7 @@ app.use(`${api}/orders`, ordersRouter);
 app.use(`${api}/authors`, authorsRouter);
 app.use(`${api}/subcategories`, subcategoryRouter);
 app.use(`${api}/auth`, userAuthRouter);
-app.use(`${api}/search`, searchRouter);
+
 
 mongoose.connect(process.env.CONNECTION_STRING)
 .then(() => {

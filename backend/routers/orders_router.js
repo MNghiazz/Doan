@@ -22,6 +22,19 @@ router.get(`/:id`, async (req, res) => {     //find 1 order by id
     res.send(order);
 });
 
+router.get('/user/:userId', async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        const orders = await Order.find({ user: userId }).populate('orderItems');
+        if (!orders) {
+            return res.status(404).json({ message: 'Orders not found' });
+        }
+        res.json(orders);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 router.get(`/get/count`, async (req, res) => {
     try {
         const orderCount = await Order.countDocuments({});     //count product
@@ -53,9 +66,8 @@ router.post(`/`, async (req, res) => {      //create category
 
     const orderItemsIdsResolved = await orderItemsIds;
     
-    let order = new Order({
+    let order = new Order({ 
         orderItems: orderItemsIdsResolved,
-        status: req.body.status,
         user: req.body.user,
     });
 
@@ -68,11 +80,11 @@ router.post(`/`, async (req, res) => {      //create category
     res.send(order);
 })
 
-router.put('/:id', async (req, res) => {        //Update category
+router.put('/:id', async (req, res) => {        //Update order
     const order = await Order.findByIdAndUpdate(
         req.params.id,
         {
-            status: req.body.status
+            orderItems: req.body.orderItems
         },
         { new: true}
     )

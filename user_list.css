@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.user-table {
+    min-width: 900px;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.user-wrap {
+    padding: 10px;
+}
+
+.user-list li {
+    background-color: white;
+    border: 2px solid black;
+}
+
+.user .user-info {
+    padding: 10px;
+}
+
+.user .user-info img {
+    width: 60px;
+    height: 60px;
+}
+
+.user .user-info #user-name {
+    font-size: 25px;
+    margin-left: 10px;    
+}

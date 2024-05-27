@@ -19,6 +19,7 @@ function extractUserId(req, res, next) {
     try {
         const decoded = jwt.verify(token, process.env.secret);
         req.userId = decoded.userId;
+        req.isAdmin = decoded.isAdmin;
         next();
     } catch (error) {
         return res.status(401).json({ message: 'Unauthorized' });
@@ -27,8 +28,9 @@ function extractUserId(req, res, next) {
 
 router.get('/profile', extractUserId, async (req, res) => {
     const userId = req.userId;
+    const isAdmin = req.isAdmin;
     // Perform operations using the userId
-    res.json({ userId });
+    res.json({ userId, isAdmin });
 });
 
 // Example route that uses the middleware to extract userId
@@ -45,13 +47,17 @@ router.get('/account', extractUserId, async (req, res) => {
     }
 });
 
-router.get(`/`, async (req, res) => {
-    const userList = await User.find().select('-passwordHash');     //find all of the user
-
-    if (!userList) {
-        res.status(500).json({ success: false })
+router.get('/', async (req, res) => {
+    try {
+        const userList = await User.find().select('-passwordHash');
+        if (!userList) {
+            return res.status(500).json({ success: false });
+        }
+        res.send(userList);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ success: false, error: error.message });
     }
-    res.send(userList);
 })
 
 router.get('/:id', async (req, res) => {            //find user by id

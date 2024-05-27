@@ -58,7 +58,7 @@ router.get(`/`, async (req, res) => {
 
 
 
-router.get('/:id', async (req, res) => {            //find category with id
+router.get('/:id', async (req, res) => {            //find product with id
     const product = await Product.findById(req.params.id).populate('category author');
     
     if(!product) {

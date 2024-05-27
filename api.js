@@ -38,6 +38,13 @@ export const url = {
         return `http://localhost:3000/api/v1/users/${id}`
     },
 
+    allUser() {
+        return `http://localhost:3000/api/v1/users`
+    },
+
+    orders(id) {
+        return `http://localhost:3000/api/v1/orders/user/${id}`
+    },
     search(query) {
         return `http://localhost:3000/api/v1/search?name=${query}`;
     }

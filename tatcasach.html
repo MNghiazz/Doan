@@ -38,7 +38,10 @@
 
 
             <div class="header-actions d-flex my-3 ms-auto me-3 align-items-center justify-content-end">
-                <button type="button" class="btn btn-success me-3 btn-sm "><strong class="cart-text">Sách đã chọn</strong></button>
+                <button type="button" class="btn btn-success me-3 btn-sm cart-button"><strong class="cart-text">Sách đã chọn</strong></button>
+                <div class="all-user" style="display: none;">
+                    <a href="">User List</a>
+                </div>
                 <div class="user-info">
                     <span id="user-name" class="user-name"><strong>Leonardo Dicaprio</strong></span>
                     <img class="rounded-circle shadow-4-strong" id="avatar" src="image/sample1.jpg" width="30" height="30">
@@ -65,8 +68,8 @@
             <div class="your-book">
                 <p>Sách của bạn</p>
                 <ul>
-                    <li><img src="icon/clock-regular.svg" width="20" class="side-icon me-2"><strong>Sách đã mượn</strong></li>
-                    <li><img src="icon/calendar-week-solid.svg" width="20" class="side-icon me-2"><strong>Sách chưa trả</strong></li>
+                    <li><img src="icon/clock-regular.svg" width="20" class="side-icon me-2" id="rentedBook"><strong>Sách đã mượn</strong></li>
+                    <li><img src="icon/calendar-week-solid.svg" width="20" class="side-icon me-2" id="nyrBook"><strong>Sách chưa trả</strong></li>
                     <li><img src="icon/star-regular.svg" width="20" class="side-icon me-2"><strong>Sách yêu thích</strong></li>
                 </ul>
             </div>

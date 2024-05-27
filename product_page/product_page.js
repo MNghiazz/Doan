@@ -304,10 +304,20 @@ function addBookToCart(bookId) {
     var storedBooks = JSON.parse(localStorage.getItem('books')) || [];
     
     
-    storedBooks.push(bookId);
+    if (!storedBooks.includes(bookId)) {
+        // If the bookId does not exist, add it to the array
+        storedBooks.push(bookId);
+        
+        // Update localStorage with the new list of books
+        localStorage.setItem('books', JSON.stringify(storedBooks));
+        
+        alert('Sách đã được thêm vào!');
+    } else {
+        alert('Đã có sách trong hàng chờ');
+    }
     
     
-    localStorage.setItem('books', JSON.stringify(storedBooks));
+    
 }
 
 

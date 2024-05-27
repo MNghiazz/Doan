@@ -9,7 +9,7 @@ categoriesPanel.innerHTML = `
     </div>
 `
 
-fetchData(url.categories(), function (categories) { 
+fetchData(url.categories(),null, function (categories) { 
 
     console.log(categories);
 
