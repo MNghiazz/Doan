@@ -16,7 +16,7 @@ nyr.addEventListener("click", function() {
     changeTab(3);
 });
 
-S
+
 
 
 function changeTab(tabIndex) {

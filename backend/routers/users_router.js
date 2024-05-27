@@ -6,34 +6,6 @@ const jwt = require('jsonwebtoken');
 const multer = require('multer');
 
 
-const FILE_TYPE_MAP = {
-    'image/png': 'png',
-    'image/jpeg': 'jpeg',
-    'image/jpg': 'jpg'
-}
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        const isValid = FILE_TYPE_MAP[file.mimetype];
-        let uploadError = new Error('invalid image type');
-
-        if (isValid) {
-
-            uploadError = null;
-        }
-        cb(uploadError, 'public/upload/user');
-    },
-    filename: function (req, file, cb) {
-        const fileName = file.originalname.split(' ').join('-');
-        const extension = FILE_TYPE_MAP[file.mimetype];
-        cb(null, `${fileName}`)
-    }
-})
-
-const uploadOptions = multer({ storage: storage });
-
-
-
 
 
 // Middleware function to extract userId from JWT token
@@ -167,7 +139,7 @@ router.delete('/:id', (req, res) => {
     })
 })
 
-router.put('/update-profile', extractUserId, uploadOptions.single('avatar'), async (req, res) => {
+router.put('/update-profile', extractUserId, async (req, res) => {
     const userId = req.userId;
     const { name, email, phone } = req.body;
 

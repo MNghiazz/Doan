@@ -172,7 +172,7 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
         </p>
     `;
 
-    bookInf.querySelector('.author-categories').addEventListener('click',  function() {
+    bookInf.querySelector('.author-categories .author').addEventListener('click',  function() {
         // Navigate to product page with the ID of the clicked product
         window.location.href = `/tatcasach.html?authors=${authorId}`;
     });
@@ -187,7 +187,12 @@ fetchData(url.productsId(productId),null,  async function(bookDetail) {
         categoryLink.classList.add("category", "me-3");
         categoryLink.textContent = category.name;
         bookInf.querySelector(".author-categories").appendChild(categoryLink);
+        bookInf.querySelector('.category').addEventListener('click', function (){
+            window.location.href = `/tatcasach.html?category=${category.id}`;
+        });
     })
+
+    
 
     const contentWrap = document.createElement('div');
     contentWrap.classList.add("content-nav-wrap", "cf");
