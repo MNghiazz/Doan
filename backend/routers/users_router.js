@@ -37,7 +37,7 @@ router.get('/profile', extractUserId, async (req, res) => {
 router.get('/account', extractUserId, async (req, res) => {
     const userId = req.userId;
     try {
-        const user = await User.findById(userId).select('name email phone avatar'); // Chọn các trường cần lấy
+        const user = await User.findById(userId).select('name email phone'); // Chọn các trường cần lấy
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -154,12 +154,7 @@ router.put('/update-profile', extractUserId, async (req, res) => {
         email: email,
         phone: phone,
     };
-
-    if (req.file) {
-        updateFields.avatar = req.file.path; // Sử dụng req.file.path để lấy đường dẫn của avatar
-        console.log(req.file.filename);
-    }
-
+    
     try {
         const user = await User.findByIdAndUpdate(userId, updateFields, { new: true });
 

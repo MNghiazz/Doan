@@ -88,7 +88,7 @@ if (token) {
 
         fetchData(url.userInf(userInfo.userId), token, function (userInfoData) {
             const { name, avatar, isAdmin } = userInfoData;
-            const avatarImg = document.getElementById('avatar');
+            const avatarImg = './image/default-avatar-icon-of-social-media-user-vector.jpg';
             console.log(name);
             document.getElementById('user-name').innerHTML = name;
 
