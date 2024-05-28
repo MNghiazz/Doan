@@ -38,16 +38,19 @@
         
             <div class="header-actions d-flex my-3 ms-auto me-3 align-items-center justify-content-end">
                 <button type="button" class="btn btn-success me-3 btn-sm cart-button "><a href="cart.html" style="text-decoration: none; color: #F0F0F0;"><strong class="cart-text">Sách đã chọn</strong></a></button>
-                <div class="all-user" style="display: none;">
-                    <a href="user_list.html">User List</a>
-                </div>
-                <div class="user-info">
-                    <span id="user-name" class="user-name"><strong></strong></span>
-                    <img class="rounded-circle shadow-4-strong" id="avatar" src="" width="30" height="30">
-                    <button id="logoutButton" style="display: none;">Logout</button>
-                </div>
-                <div class="divider"></div>
-                <img src="icon/bell-solid.svg" alt="bell icon" width="20"  class="bell-icon">
+                    <div class="all-user" style="display: none;">
+                        <a href="user_list.html">User List</a>
+                    </div>
+                    <div class="user-info">
+                        <span id="user-name" class="user-name"><strong></strong></span>
+                        <a href="./account-management.html"><img class="rounded-circle shadow-4-strong" id="avatar" src="" width="30" height="30"></a>
+                        <button 
+                            id="logoutButton" 
+                            style="border: none; padding: 5px 10px; border-radius: 6px; margin: 0 10px; background-color: red; color: #fff; font-weight: 500;"
+                        >Đăng xuất</button>
+                    </div>
+                    <div class="divider"></div>
+                    <img src="icon/bell-solid.svg" alt="bell icon" width="20"  class="bell-icon">
             </div>
         </div>
         
@@ -59,7 +62,7 @@
                 <div class="browser">
                     <p>Danh mục sách</p>
                     <ul>
-                        <li><img src="icon/book-open-solid.svg" width="20" class="side-icon me-2 "><strong>Toàn bộ sách</strong></li>
+                        <li><img src="icon/book-open-solid.svg" width="20" class="side-icon me-2 "><strong><a href="tatcasach.html">Toàn bộ sách</a></strong></li>
                         <li><img src="icon/layer-group-solid.svg" width="20" class="side-icon me-2 "><strong><a href="categories.html">Thể loại</a></strong></li>
                         <li><img src="icon/fire-solid.svg" width="20" class="side-icon me-2 "><strong>Sách thịnh hành</strong></li>
                     </ul>
@@ -98,59 +101,7 @@
                 <div class="head-title pending" id="pending" pending>
                     <div class="book-container">
                         <ul class="item-list">
-                            <li class="item">
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <div class="book-details">
-                                    <p class="book-info">
-                                        <span class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</span>
-                                        <span class="author-name">Tacs gia</span>
-                                        <div class="categories">
-                                            <span class="category">Tiểu thuyết</span>
-                                            <em>|</em>
-                                            <span class="category">Văn học</span>
-                                        </div>
-
-                                        
-                                    </p>
-
-                                    <button class="btn btn-danger btn-sm" id="reject">Từ chối</button>
-                                    <button class="btn btn-success btn-sm" id="permit">Cho mượn</button>
-                                    <button class="btn btn-sucess btn-sm" id="returned" style="display: none;">Đã trả sách</button>  
-                                    
-                                </div>
-                                <span class="date-borrow">Ngay muon <i>2/06/2001</i></span>
-                                 
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -160,42 +111,7 @@
                     
                     <div class="book-container">                        
                         <ul class="item-list">
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -205,42 +121,7 @@
                     
                     <div class="book-container">
                         <ul class="item-list">
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
-                            <li>
-                                <img src="/image/12956-truyen-ke-ve-cac-nha-bac-hoc-vat-ly-1.jpg" class="book-images">
-                                <p class="book-name">Ten sachafafafafafafafafafafafafafafafafafafafafafafafafafafafaf</p>
-                                <p class="author-name">Tacs gia</p>
-                                <span class="date-borrow">Ngay muon: 2/06/2001</span>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>

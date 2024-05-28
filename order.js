@@ -96,10 +96,7 @@ async function displayItem() {
                     const returnedButton = itemCard.querySelector('.returned-btn');
 
                     
-                    if (!isAdmin) {
-                        itemCard.querySelector('.permit-btn').style.display = 'none';
-                        itemCard.querySelector('.reject-btn').style.display = 'none';
-                    }
+                    
 
 
                     if (orderItemDetail.status === 'Pending') {
@@ -109,13 +106,30 @@ async function displayItem() {
                         itemCard.querySelector('.permit-btn').style.display = 'none';
                         itemCard.querySelector('.reject-btn').style.display = 'none';
 
+                        
+
                         const nyrCard = itemCard.cloneNode(true); // Clone node for NYR section
                         nyrCard.querySelector('.permit-btn').style.display = 'none';
                         nyrCard.querySelector('.reject-btn').style.display = 'none';
                         nyrCard.querySelector('.returned-btn').style.display = 'block';
                         nyrItem.appendChild(nyrCard);
+
+                        if (!isAdmin) {
+                            nyrCard.querySelector('.permit-btn').style.display = 'none';
+                            nyrCard.querySelector('.reject-btn').style.display = 'none';
+                            nyrCard.querySelector('.returned-btn').style.display = 'none';
+                        }
+
+                        nyrCard.querySelector('.returned-btn').addEventListener('click', () => {
+                            updateOrderItemStatus(orderItemDetail._id, 'Returned', token, () => {
+                                nyrCard.remove(); // Remove the item from the current list
+                            });
+                        });
+
                     } else if (orderItemDetail.status === 'Returned') {
                         rentedItem.appendChild(itemCard);
+                        itemCard.querySelector('.permit-btn').style.display = 'none';
+                        itemCard.querySelector('.reject-btn').style.display = 'none';
                     }
 
                     
@@ -140,12 +154,7 @@ async function displayItem() {
                         
                     });
 
-                    returnedButton.addEventListener('click', () => {
-                        updateOrderItemStatus(orderItemDetail._id, 'Returned', token, () => {
-                            itemCard.remove(); // Remove the item from the current list
-                            
-                        });
-                    })
+                    
 
                 });
             });
