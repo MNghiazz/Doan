@@ -340,6 +340,52 @@ footer {
   z-index: 8;
   
 }
+.search-results-dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 600px; /* Tăng chiều cao tối đa của dropdown */
+  overflow-y: auto;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Đảm bảo dropdown nằm trên các phần tử khác */
+  width: calc(100% - 1100px); /* Đảm bảo chiều rộng không quá phần tử chứa */
+  border: 1px solid #ccc;
+  display: none; /* Ẩn danh sách kết quả ban đầu */
+}
+
+.search-results-dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  display: flex; /* Đảm bảo các phần tử con hiển thị theo hàng ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm tăng chiều rộng */
+}
+
+.search-results-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+.book-card img {
+  width: 50px;
+  height: 75px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.book-info {
+  flex-grow: 1; /* Đảm bảo phần thông tin sách chiếm hết không gian còn lại */
+}
+
+.book-card {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
 
 .error-content .btn-primary {margin-block-start: 20px;}
 
