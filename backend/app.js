@@ -43,7 +43,7 @@ app.use(`${api}/orders`, ordersRouter);
 app.use(`${api}/authors`, authorsRouter);
 app.use(`${api}/subcategories`, subcategoryRouter);
 app.use(`${api}/auth`, userAuthRouter);
-
+app.use(`${api}/search`, searchRouter);
 
 mongoose.connect(process.env.CONNECTION_STRING)
 .then(() => {
