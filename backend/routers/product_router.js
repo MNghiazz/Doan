@@ -77,6 +77,35 @@ router.get('/:id', async (req, res) => {            //find product with id
     res.status(200).send(product); 
 })
 
+router.put('/:id/image', uploadOptions.single('image'), async (req, res) => {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+        return res.status(400).send('Invalid Product ID');
+    }
+
+    const file = req.file;
+    if (!file) {
+        return res.status(400).send('No image in the request');
+    }
+
+    const fileName = req.file.filename;
+    const basePath = `${req.protocol}://${req.get('host')}/public/upload/`;
+    const imageUrl = `${basePath}${fileName}`;
+
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+
+        product.image = imageUrl;
+        await product.save();
+
+        res.status(200).send(product);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal server error');
+    }
+});
 
 
 

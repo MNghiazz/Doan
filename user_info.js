@@ -39,7 +39,7 @@ let isAdmin;
 
 function fetchUserId(token) {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:3000/api/v1/users/profile', {
+        fetch('http://thuvien-bice.vercel.app/api/v1/users/profile', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`

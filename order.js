@@ -168,7 +168,7 @@ async function displayItem() {
 
 
 function updateOrderItemStatus(orderItemId, newStatus, token, callback) {
-    fetch(`http://localhost:3000/api/v1/order-items/${orderItemId}`, {
+    fetch(`http://thuvien-bice.vercel.app/api/v1/order-items/${orderItemId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -187,7 +187,7 @@ function updateOrderItemStatus(orderItemId, newStatus, token, callback) {
 }
 
 function deleteOrderItem(orderItemId, token, callback) {
-    fetch(`http://localhost:3000/api/v1/order-items/${orderItemId}`, {
+    fetch(`http://thuvien-bice.vercel.app/api/v1/order-items/${orderItemId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`

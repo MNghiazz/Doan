@@ -12,6 +12,13 @@ require('dotenv/config');
 app.use(cors());
 app.options('*', cors());
 
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next()
+  });
+
+
 const api = process.env.API_URL;
 
 

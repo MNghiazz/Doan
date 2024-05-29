@@ -90,7 +90,7 @@ displayBooksInCart();
 
 async function postItemsToOrder(cartItems, token, userId) {
     try {
-        let userOrders = await fetch(`http://localhost:3000/api/v1/orders/user/${userId}`, {
+        let userOrders = await fetch(`https://thuvien-bice.vercel.app/api/v1/orders/user/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ async function postItemsToOrder(cartItems, token, userId) {
             let userOrder = userOrders[0];
 
             const orderItemsIds = await Promise.all(cartItems.map(async itemId => {
-                const newOrderItem = await fetch('http://localhost:3000/api/v1/order-items', {
+                const newOrderItem = await fetch('http://thuvien-bice.vercel.app/api/v1/order-items', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ async function postItemsToOrder(cartItems, token, userId) {
 
             const updatedOrderItems = userOrder.orderItems.concat(orderItemsIds);
 
-            await fetch(`http://localhost:3000/api/v1/orders/${userOrder._id}`, {
+            await fetch(`http://thuvien-bice.vercel.app/api/v1/orders/${userOrder._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ async function postItemsToOrder(cartItems, token, userId) {
             console.log('Order updated successfully');
         } else {
             const orderItemsIds = await Promise.all(cartItems.map(async itemId => {
-                const newOrderItem = await fetch('http://localhost:3000/api/v1/order-items', {
+                const newOrderItem = await fetch('http://thuvien-bice.vercel.app/api/v1/order-items', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -147,7 +147,7 @@ async function postItemsToOrder(cartItems, token, userId) {
                 user: userId,
             };
 
-            await fetch('http://localhost:3000/api/v1/orders', {
+            await fetch('http://thuvien-bice.vercel.app/api/v1/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
