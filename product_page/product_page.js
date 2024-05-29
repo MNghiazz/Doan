@@ -1,7 +1,5 @@
 import { fetchData, url } from "../api.js";
 
-import pdfjsDist from 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.2.67/+esm'
-
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
 
