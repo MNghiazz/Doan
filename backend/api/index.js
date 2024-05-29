@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const authJwt = require('./helpers/jwt');
-const errorHandler = require('./helpers/error-handler');
+const authJwt = require('../helpers/jwt')
+const errorHandler = require('../helpers/error-handler');
 require('dotenv/config');
 
 
@@ -25,15 +25,15 @@ app.use(errorHandler);
 app.use('/public/upload', express.static(__dirname + '/public/upload'));
 
 //routers
-const productRouter = require('./routers/product_router');
-const categoriesRouter = require('./routers/categories_router');
-const usersRouter = require('./routers/users_router');
-const ordersRouter = require('./routers/orders_router');
-const authorsRouter = require('./routers/authors_router');
-const subcategoryRouter = require('./routers/subCategory_router');
-const userAuthRouter = require('./routers/userAuthRouter');
-const orderItems = require('./routers/order-items');
-const searchRouter = require("./routers/search_router");
+const productRouter = require('../routers/product_router');
+const categoriesRouter = require('../routers/categories_router');
+const usersRouter = require('../routers/users_router');
+const ordersRouter = require('../routers/orders_router');
+const authorsRouter = require('../routers/authors_router');
+const subcategoryRouter = require('../routers/subCategory_router');
+const userAuthRouter = require('../routers/userAuthRouter');
+const orderItems = require('../routers/order-items');
+const searchRouter = require("../routers/search_router");
 
 
 app.use(`${api}/products`, productRouter);
