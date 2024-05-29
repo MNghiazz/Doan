@@ -20,10 +20,7 @@ rentedSite.addEventListener("click", function() {
 
 
 
-function toggleLogoutButton() {
-    logoutButton.style.display = logoutButton.style.display === 'none' ? 'block' : 'none';
-}
-userInfo.addEventListener('click', toggleLogoutButton);
+
 
 logoutButton.addEventListener('click', logout);
 

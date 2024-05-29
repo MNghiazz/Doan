@@ -101,6 +101,15 @@ async function displayItem() {
 
                     if (orderItemDetail.status === 'Pending') {
                         pendingItem.appendChild(itemCard);
+
+                        itemCard.querySelector('.reject-btn').addEventListener('click', () => {
+                            // Handle reject button click
+                            deleteOrderItem(orderItemDetail._id, token, () => {
+                                itemCard.remove();
+                            });
+                            
+                        });
+
                     } else if (orderItemDetail.status === 'Rented') {
                         rentedItem.appendChild(itemCard);
                         itemCard.querySelector('.permit-btn').style.display = 'none';
@@ -123,6 +132,7 @@ async function displayItem() {
                         nyrCard.querySelector('.returned-btn').addEventListener('click', () => {
                             updateOrderItemStatus(orderItemDetail._id, 'Returned', token, () => {
                                 nyrCard.remove(); // Remove the item from the current list
+                                window.location.reload();
                             });
                         });
 
@@ -146,13 +156,7 @@ async function displayItem() {
 
                     });
 
-                    rejectButton.addEventListener('click', () => {
-                        // Handle reject button click
-                        deleteOrderItem(orderItemDetail._id, token, () => {
-                            itemCard.remove();
-                        });
-                        
-                    });
+                    
 
                     
 

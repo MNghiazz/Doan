@@ -18,6 +18,10 @@ export const url = {
         return `http://localhost:3000/api/v1/products`
     },
 
+    recentAddedProduct() {
+        return `http://localhost:3000/api/v1/products/recent`
+    },
+
     categories() {
         return `http://localhost:3000/api/v1/categories`
     },

@@ -56,6 +56,16 @@ router.get(`/`, async (req, res) => {
     }
 });
 
+router.get(`/recent`, async (req, res) => {
+    try {
+        const recentProducts = await Product.find().sort({ dateCreated: -1 }).limit(20).populate('author category');
+        res.send(recentProducts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+});
+
 
 
 router.get('/:id', async (req, res) => {            //find product with id
@@ -154,6 +164,8 @@ router.get(`/get/count`, async (req, res) => {
     }
     
 })
+
+
 
 
 module.exports = router;
