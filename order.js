@@ -101,15 +101,6 @@ async function displayItem() {
 
                     if (orderItemDetail.status === 'Pending') {
                         pendingItem.appendChild(itemCard);
-
-                        itemCard.querySelector('.reject-btn').addEventListener('click', () => {
-                            // Handle reject button click
-                            deleteOrderItem(orderItemDetail._id, token, () => {
-                                itemCard.remove();
-                            });
-                            
-                        });
-
                     } else if (orderItemDetail.status === 'Rented') {
                         rentedItem.appendChild(itemCard);
                         itemCard.querySelector('.permit-btn').style.display = 'none';
@@ -132,7 +123,6 @@ async function displayItem() {
                         nyrCard.querySelector('.returned-btn').addEventListener('click', () => {
                             updateOrderItemStatus(orderItemDetail._id, 'Returned', token, () => {
                                 nyrCard.remove(); // Remove the item from the current list
-                                window.location.reload();
                             });
                         });
 
@@ -156,7 +146,13 @@ async function displayItem() {
 
                     });
 
-                    
+                    rejectButton.addEventListener('click', () => {
+                        // Handle reject button click
+                        deleteOrderItem(orderItemDetail._id, token, () => {
+                            itemCard.remove();
+                        });
+                        
+                    });
 
                     
 
@@ -168,7 +164,7 @@ async function displayItem() {
 
 
 function updateOrderItemStatus(orderItemId, newStatus, token, callback) {
-    fetch(`http://thuvien-bice.vercel.app/api/v1/order-items/${orderItemId}`, {
+    fetch(`http://localhost:3000/api/v1/order-items/${orderItemId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -187,7 +183,7 @@ function updateOrderItemStatus(orderItemId, newStatus, token, callback) {
 }
 
 function deleteOrderItem(orderItemId, token, callback) {
-    fetch(`http://thuvien-bice.vercel.app/api/v1/order-items/${orderItemId}`, {
+    fetch(`http://localhost:3000/api/v1/order-items/${orderItemId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`

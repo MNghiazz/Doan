@@ -20,7 +20,10 @@ rentedSite.addEventListener("click", function() {
 
 
 
-
+function toggleLogoutButton() {
+    logoutButton.style.display = logoutButton.style.display === 'none' ? 'block' : 'none';
+}
+userInfo.addEventListener('click', toggleLogoutButton);
 
 logoutButton.addEventListener('click', logout);
 
@@ -39,7 +42,7 @@ let isAdmin;
 
 function fetchUserId(token) {
     return new Promise((resolve, reject) => {
-        fetch('http://thuvien-bice.vercel.app/api/v1/users/profile', {
+        fetch('http://localhost:3000/api/v1/users/profile', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`

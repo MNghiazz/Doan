@@ -6,6 +6,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const category = urlParams.get('category');
 const author = urlParams.get('authors');
 
+
 const product_grid = document.querySelector('[book-content]');
 
 if (category) {
@@ -19,80 +20,163 @@ if (category) {
     fetchDataAllBook();
 }
 
-function fetchDataWithAuthor(author) {
-    fetchData(url.productWithAuthor(author), null, function (mainProduct) {
-        displayBooks(mainProduct, `Sách có cùng tác giả: ${mainProduct[0]?.author.name}`);
+
+function fetchDataWithAuthor() {
+    
+    
+
+    fetchData(url.productWithAuthor(author),null, function (mainProduct) {
+
+        for(let i =0; i < 20; i++) {
+            const {
+                id, 
+                name, 
+                description, 
+                image, 
+                author: { name: authorName, id: authorId},
+                rating
+            } = mainProduct[i];
+
+            product_grid.querySelector('.title').innerText = `Sách có cùng tác giả: ${authorName}`;
+
+            const card = document.createElement('li');
+            card.innerHTML = `
+            <div class="box-content">
+                <div class="book-images">
+                    <img src="${image}"  width="200" height="200" class="lazyloaded ">
+                </div>
+                <p class="title">${name}</p>
+                <p class="author">${authorName}</p>
+                <div class="rating-container">
+                    <div class="desktop-only ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width: 87%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            card.addEventListener('click', function() {
+                // Navigate to product page with the ID of the clicked product
+                window.location.href = `./product_page/product_page.html?id=${id}`;
+            });
+            
+            product_grid.querySelector('.products-grid').appendChild(card);
+            
+        }
+        
+        
+
     });
 }
 
-function fetchDataCategory(category) {
-    fetchData(url.productWithCategories(category), null, function (mainProduct) {
-        displayBooks(mainProduct, `Sách có cùng thể loại: ${mainProduct[0]?.category[0].name}`);
+function fetchDataCategory() {
+
+    fetchData(url.productWithCategories(category),null, function (mainProduct) {
+
+        for(let i =0; i < 20; i++) {
+            const {
+                id, 
+                name, 
+                description, 
+                image, 
+                author: { name: authorName, id: authorId},
+                category : [{name: categoryName, id: categoryId}],
+                rating
+            } = mainProduct[i];
+
+            product_grid.querySelector('.title').innerText = `Sách có cùng thể loại: ${categoryName}`;
+
+
+            const card = document.createElement('li');
+            card.innerHTML = `
+            <div class="box-content">
+                <div class="book-images">
+                    <img src="${image}"  width="200" height="200" class="lazyloaded ">
+                </div>
+                <p class="title">${name}</p>
+                <p class="author">${authorName}</p>
+                <div class="rating-container">
+                    <div class="desktop-only ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width: 87%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            card.addEventListener('click', function() {
+                // Navigate to product page with the ID of the clicked product
+                window.location.href = `./product_page/product_page.html?id=${id}`;
+            });
+            
+            product_grid.querySelector('.products-grid').appendChild(card);
+            
+        }
+        
+        
+
     });
 }
 
 function fetchDataAllBook() {
-    fetchData(url.products(), null, function (mainProduct) {
-        displayBooks(mainProduct);
-    });
-}
 
-function displayBooks(books, title = 'Tất cả sách') {
-    product_grid.querySelector('.title').innerText = title;
-    product_grid.querySelector('.products-grid').innerHTML = ''; // Clear previous content
-    books.forEach(book => {
-        const {
-            id, 
-            name, 
-            description, 
-            image, 
-            author: { name: authorName },
-            rating
-        } = book;
+    fetchData(url.products(),null, function (mainProduct) {
 
-        const card = document.createElement('li');
-        card.innerHTML = `
-        <div class="box-content">
-            <div class="book-images">
-                <img src="${image}" width="200" height="200" class="lazyloaded">
-            </div>
-            <p class="title">${name}</p>
-            <p class="author">${authorName}</p>
-            <div class="rating-container">
-                <div class="desktop-only ratings">
-                    <div class="rating-box">
-                        <div class="rating" style="width: ${rating * 20}%;"></div>
+        for(let i =0; i < 20; i++) {
+            const {
+                id, 
+                name, 
+                description, 
+                image, 
+                author: { name: authorName, id: authorId},
+                rating
+            } = mainProduct[i];
+
+            const card = document.createElement('li');
+            card.innerHTML = `
+            <div class="box-content">
+                <div class="book-images">
+                    <img src="${image}"  width="200" height="200" class="lazyloaded ">
+                </div>
+                <p class="title">${name}</p>
+                <p class="author">${authorName}</p>
+                <div class="rating-container">
+                    <div class="desktop-only ratings">
+                        <div class="rating-box">
+                            <div class="rating" style="width: 87%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        `;
-        card.addEventListener('click', function() {
-            // Navigate to product page with the ID of the clicked product
-            window.location.href = `./product_page/product_page.html?id=${id}`;
-        });
+            `;
+            card.addEventListener('click', function() {
+                // Navigate to product page with the ID of the clicked product
+                window.location.href = `./product_page/product_page.html?id=${id}`;
+            });
+            
+            product_grid.querySelector('.products-grid').appendChild(card);
+            
+        }
+        
+        
 
-        product_grid.querySelector('.products-grid').appendChild(card);
     });
-
-    // Update the list variable with the new items and call Loading
-    updateListAndLoad();
 }
 
-function updateListAndLoad() {
-    const list = document.querySelectorAll('.main-container .allBook .products-grid > li');
-    Loading(list);
-}
+
 
 let thisPage = 1;
 let limit = 20;
+const list = document.querySelectorAll('.main-container .allBook .products-grid > li');
+
 
 function changePage(i) {
     thisPage = i;
     Loading();
 }
 
-function Loading(list) {
+function Loading() {
     let beginGet = limit * (thisPage - 1);
     let endGet = limit * thisPage - 1;
     list.forEach((item, key) => {
@@ -102,10 +186,11 @@ function Loading(list) {
             item.style.display = 'none';
         }
     });
-    listPage(list);
+    listPage();
 }
+Loading();
 
-function listPage(list) {
+function listPage() {
     let count = Math.ceil(list.length / limit);
     const listChapter = document.querySelector('.pagination');
 
@@ -141,7 +226,7 @@ function listPage(list) {
         newPage.innerHTML = `
             <a>
                 ${i}
-                <span class="sr-only">(current)</span>
+                <span class="sr-only" style>(current)</span>
             </a>
         `;
         if (i == thisPage) {
@@ -166,7 +251,7 @@ function listPage(list) {
     if (thisPage != count) {
         let finalPage = document.createElement('li');
         finalPage.innerHTML = `
-            <a aria-label="Next">
+            <a  aria-label="Next">
                 <span aria-hidden="true">Trang cuối</span>
             </a>
         `;
@@ -174,3 +259,6 @@ function listPage(list) {
         listChapter.appendChild(finalPage);
     }
 }
+
+
+

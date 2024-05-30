@@ -7,11 +7,6 @@ const multer = require('multer');
 
 
 
-router.all('/', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next()
-  });
 
 // Middleware function to extract userId from JWT token
 function extractUserId(req, res, next) {

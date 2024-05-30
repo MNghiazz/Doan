@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('loginPassword').value;
 
         try {
-            const response = await fetch('http://thuvien-bice.vercel.app/api/v1/users/login', {
+            const response = await fetch('http://localhost:3000/api/v1/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.setItem('token', data.token);
                 // Redirect to the homepage
                 window.location.href = '../index.html';
-            }else {
-                console.error('Login failed:', data);
             }
 
         } catch (error) {
