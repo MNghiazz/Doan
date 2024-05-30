@@ -77,4 +77,3 @@ function displaySearchResults(results) {
 
     searchResultsContainer.style.display = 'block'; // Hiển thị danh sách kết quả sau khi đã thêm các phần tử
 }
-// lp
