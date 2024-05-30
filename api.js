@@ -15,38 +15,42 @@ export const fetchData = function (URL, token = null,  callback) {
 
 export const url = {
     products() {
-        return `http://localhost:3000/api/v1/products`
+        return `http://thuvien-bice.vercel.app/api/v1/products`
+    },
+
+    recentAddedProduct() {
+        return `http://thuvien-bice.vercel.app/api/v1/products/recent`
     },
 
     categories() {
-        return `http://localhost:3000/api/v1/categories`
+        return `http://thuvien-bice.vercel.app/api/v1/categories`
     },
 
     productWithCategories(id) {
-        return `http://localhost:3000/api/v1/products?categories=${id}`
+        return `http://thuvien-bice.vercel.app/api/v1/products?categories=${id}`
     },
 
     productWithAuthor(id){
-        return `http://localhost:3000/api/v1/products?authors=${id}`
+        return `http://thuvien-bice.vercel.app/api/v1/products?authors=${id}`
     },
 
     productsId(id) {
-        return `http://localhost:3000/api/v1/products/${id}`
+        return `http://thuvien-bice.vercel.app/api/v1/products/${id}`
     },
 
     userInf(id) {
-        return `http://localhost:3000/api/v1/users/${id}`
+        return `http://thuvien-bice.vercel.app/api/v1/users/${id}`
     },
 
     allUser() {
-        return `http://localhost:3000/api/v1/users`
+        return `http://thuvien-bice.vercel.app/api/v1/users`
     },
 
     orders(id) {
-        return `http://localhost:3000/api/v1/orders/user/${id}`
+        return `http://thuvien-bice.vercel.app/api/v1/orders/user/${id}`
     },
     search(query) {
-        return `http://localhost:3000/api/v1/search?name=${query}`;
+        return `http://thuvien-bice.vercel.app/api/v1/search?name=${query}`;
     }
 
 

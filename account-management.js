@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function() {
     try {
-        const response = await fetch('http://localhost:3000/api/v1/users/account', {
+        const response = await fetch('http://thuvien-bice.vercel.app/api/v1/users/account', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -28,7 +28,7 @@ document.getElementById('profileForm').addEventListener('submit', async function
     const formData = new FormData(this);
     
     try {
-        const response = await fetch('http://localhost:3000/api/v1/users/update-profile', {
+        const response = await fetch('http://thuvien-bice.vercel.app/api/v1/users/update-profile', {
             method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
